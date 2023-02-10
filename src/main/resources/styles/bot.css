@@ -1,0 +1,25 @@
+.botTab-header {
+  -fx-background-color: #cfe0e8;
+  -fx-text-fill: black;
+}
+
+.suggestions {
+  -fx-background-color: #abc0ca;
+}
+
+.botTab-return {
+  -fx-background-color: none;
+  -fx-text-fill: black;
+}
+
+.suggestions-button {
+  -fx-background-color: #cfe0e8;
+  -fx-background-radius: 50px;
+  -fx-border-radius: 50px;
+}
+
+.bot-chat {
+  -fx-background-color: #bee0f0;
+  -fx-background-radius: 50px;
+  -fx-border-radius: 50px;
+}

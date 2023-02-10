@@ -1,0 +1,3 @@
+0,HOW TO GET NATIONAL ID,*,*,Here is how,__test_Faq.aiml
+0,*,*,*,<srai>UDC</srai>,__test_Faq.aiml
+0,UDC,*,*,<random>#Newline            <li><srai>RANDOM PICKUP LINE</srai></li>#Newline            <li><srai>INQUIRY AGE</srai></li>#Newline            <li><srai>INQUIRY GENDER</srai></li>#Newline            <li><srai>INQUIRY LOCATION</srai></li>#Newline            </random>,__test_Faq.aiml

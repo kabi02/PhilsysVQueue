@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp_one.controllers.DashboardController">
+   <children>
+      <TableView fx:id="dashboardTable" layoutY="32.0" prefHeight="517.0" prefWidth="900.0">
+        <columns>
+          <TableColumn fx:id="ctnColumn" editable="false" prefWidth="156.33334350585938" text="Transaction Number" />
+          <TableColumn fx:id="nameColumn" editable="false" minWidth="0.0" prefWidth="365.6666564941406" text="Name" />
+            <TableColumn fx:id="dateColumn" editable="false" minWidth="0.0" prefWidth="193.0" text="Date of Transaction" />
+            <TableColumn fx:id="actionColumn" editable="false" minWidth="0.0" prefWidth="0.0" />
+        </columns>
+      </TableView>
+      <AnchorPane prefHeight="32.0" prefWidth="900.0">
+         <children>
+            <AnchorPane prefHeight="8.0" prefWidth="485.0">
+               <children>
+                  <Label layoutX="12.0" layoutY="5.0" text="Requests" underline="true">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="78.0" layoutY="5.0" text="Queue for Biometrics" underline="true">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="219.0" layoutY="5.0" text="Queue for ID Claiming" underline="true">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="371.0" layoutY="5.0" text="Finished" underline="true">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="580.0" prefHeight="30.0" prefWidth="240.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="58.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../Pictures/Arts/kay%20mama.png" />
+                     </image>
+                  </ImageView>
+                  <TextField layoutX="94.0" layoutY="3.0" />
+                  <Label layoutX="261.0" layoutY="6.0" onMouseClicked="#logoutUser" text="Logout" underline="true">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

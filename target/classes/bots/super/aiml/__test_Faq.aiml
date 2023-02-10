@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!-- File: __test_Faq.aiml -->
+<!-- Author: Dr. Richard S. Wallace -->
+<!-- Last modified: February 09, 2023 -->
+<!--  -->
+<!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
+<!--  -->
+<!-- The SUPER brain is Copyright &copy; 2023 by ALICE AI Foundation. -->
+<!--  -->
+<!-- The SUPER brain is released under the terms of the GNU Lesser General -->
+<!-- Public License, as published by the Free Software Foundation. -->
+<!--  -->
+<!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
+<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
+<!--  -->
+<!-- For more information see http://www.alicebot.org -->
+<category><pattern>HOW TO GET NATIONAL ID</pattern>
+<template>Here is how</template>
+</category>
+<category><pattern>*</pattern>
+<template><srai>UDC</srai></template>
+</category>
+<category><pattern>UDC</pattern>
+<template><random>
+            <li><srai>RANDOM PICKUP LINE</srai></li>
+            <li><srai>INQUIRY AGE</srai></li>
+            <li><srai>INQUIRY GENDER</srai></li>
+            <li><srai>INQUIRY LOCATION</srai></li>
+            </random></template>
+</category>
+</aiml>

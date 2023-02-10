@@ -29,7 +29,7 @@ public class ChatBotController implements Initializable {
 
     private static final boolean TRACE_MODE = false;
     private String defaultResponse = "Sensya na lods";
-    private String defaultStyle = " -fx-background-radius: 25px;" + "-fx-border-radius: 25px;" + "-fx-padding: 5px;";
+    private String defaultStyle = " -fx-background-radius: 15px;" + "-fx-border-radius: 15px;" + "-fx-padding: 5px;";
     private Double initXpos;
     private Double offsetPos = 0.0;
     private Double chatHeight;
@@ -37,10 +37,11 @@ public class ChatBotController implements Initializable {
     private Bot bot;
     private Chat chatSession;
 
-    private Label responseChat;
+    private Label message;
     private AnchorPane sessionPane;
-    private ArrayList<Label> sessionBotChat;
-    private ArrayList<Label> sessionUserChat;
+    private ArrayList<Label> response;
+    private ArrayList<Label> action;
+    private ArrayList<String> chatHistory = new ArrayList<String>();
 
     @FXML
     private AnchorPane suggestions;
@@ -52,7 +53,6 @@ public class ChatBotController implements Initializable {
     @FXML
     private void enterSuggestions(final MouseEvent event) throws Exception {
         Main.getStage().getScene().setCursor(Cursor.HAND);
-
     }
 
     @FXML
@@ -81,63 +81,74 @@ public class ChatBotController implements Initializable {
 
     @FXML
     public void chatInteract(final KeyEvent event) throws Exception {
-        String chat = "";
+        String inquiry = "";
         if (event.getCode() == KeyCode.ENTER) {
-            chat = chatbox.getText();
+            inquiry = chatbox.getText();
             chatbox.clear();
-            if ((chat == null) || (chat.length() < 1))
+            if ((inquiry == null) || (inquiry.length() < 1))
                 return;
-            String request = chat;
-            if (MagicBooleans.trace_mode)
-                System.out.println(
-                        "STATE=" + request + ":THAT=" + ((History) chatSession.thatHistory.get(0)).get(0)
-                                + ":TOPIC=" + chatSession.predicates.get("topic"));
-            String response = chatSession.multisentenceRespond(request);
-            while (response.contains("&lt;"))
-                response = response.replace("&lt;", "<");
-            while (response.contains("&gt;"))
-                response = response.replace("&gt;", ">");
+            // if (true)
+            // System.out.println(
+            // "STATE=" + inquiry + ":THAT=" +
+            // (chatSession.thatHistory.get(0)).get(0).toString()
+            // + ":TOPIC=" + chatSession.predicates.get("topic"));
+            String response = chatSession.multisentenceRespond(inquiry);
+            // while (response.contains("&lt;"))
+            // response = response.replace("&lt;", "<");
+            // while (response.contains("&gt;"))
+            // response = response.replace("&gt;", ">");
             // System.out.println("Robot : " + response);
-            addUserChat(chat);
-            addBotChat(response);
+            if ((chatSession.thatHistory.get(0)).get(0).toString().equalsIgnoreCase("unknown")) {
+                response = "I'm sorry I coudln't understand.";
+            }
+            chatHistory.add(inquiry);
+            chatHistory.add((chatSession.thatHistory.get(0)).get(0).toString());
+            // System.out.println((chatSession.thatHistory.get(0)).get(0).toString());
+            userInquiry(inquiry);
+            botResponse(response);
             sessionPane.setMinHeight(chatHeight);
 
         }
     }
 
-    private void addUserChat(String chat) {
-        Label previous = sessionBotChat.get(sessionBotChat.size() - 1);
-        responseChat = new Label(chat);
-        responseChat.setMaxWidth(200);
-        responseChat.setWrapText(true);
-        responseChat.setTranslateY((previous.getTranslateY() + previous.getHeight()) + 12);
-        responseChat.setStyle(" -fx-background-color: #bed0ef;" + defaultStyle);
-        responseChat.setVisible(false);
-        sessionUserChat.add(responseChat);
-        sessionPane.getChildren().add(sessionUserChat.get(sessionUserChat.size() - 1));
+    private void userInquiry(String chat) {
+        Label previous = response.get(response.size() - 1);
+        message = initMessage(chat);
+        message.setTranslateY((previous.getTranslateY() + previous.getHeight()) + 12);
+        message.setStyle(" -fx-background-color: #bed0ef;" + defaultStyle);
+        message.setVisible(false);
+        action.add(message);
+        sessionPane.getChildren().add(action.get(action.size() - 1));
         sessionPane.applyCss();
         sessionPane.layout();
         sessionPane.getChildren().get(sessionPane.getChildren().size() - 1)
-                .setTranslateX(Main.getStage().getWidth() - responseChat.getWidth() - 35);
+                .setTranslateX(Main.getStage().getWidth() - message.getWidth() - 35);
         sessionPane.getChildren().get(sessionPane.getChildren().size() - 1).setVisible(true);
-        System.out.println(Main.getStage().getWidth() + " " + responseChat.getWidth() + " "
-                + (Main.getStage().getWidth() - responseChat.getWidth()));
+        // System.out.println(Main.getStage().getWidth() + " " + message.getWidth()
+        // + " "
+        // + (Main.getStage().getWidth() - message.getWidth()));
     }
 
-    private void addBotChat(String chat) {
-        Label previous = sessionUserChat.get(sessionUserChat.size() - 1);
-        responseChat = new Label(chat);
-        responseChat.setMaxWidth(200);
-        responseChat.setWrapText(true);
-        responseChat.setTranslateY((previous.getTranslateY() + previous.getHeight()) + 12);
-        responseChat.setStyle(" -fx-background-color: #bee0f0;" + defaultStyle);
-        sessionBotChat.add(responseChat);
-        sessionPane.getChildren().add(sessionBotChat.get(sessionBotChat.size() - 1));
+    private void botResponse(String chat) {
+        Label previous = action.get(action.size() - 1);
+        message = initMessage(chat);
+        message.setTranslateX(5);
+        message.setTranslateY((previous.getTranslateY() + previous.getHeight()) + 12);
+        message.setStyle(" -fx-background-color: #bee0f0;" + defaultStyle);
+        response.add(message);
+        sessionPane.getChildren().add(response.get(response.size() - 1));
         sessionPane.applyCss();
         sessionPane.layout();
         session.vvalueProperty().bind(sessionPane.heightProperty());
-        chatHeight = responseChat.getHeight() + responseChat.getTranslateY() + 20;
-        System.out.println(chatHeight);
+        chatHeight = message.getHeight() + message.getTranslateY() + 20;
+        // chatSession.thatHistory.printHistory();
+    }
+
+    private Label initMessage(String chat) {
+        Label newMessage = new Label(chat);
+        newMessage.setMaxWidth(200);
+        newMessage.setWrapText(true);
+        return newMessage;
     }
 
     private static String getResourcesPath() {
@@ -154,18 +165,19 @@ public class ChatBotController implements Initializable {
         sessionPane = new AnchorPane();
         session.setContent(sessionPane);
 
-        sessionBotChat = new ArrayList<Label>();
-        sessionUserChat = new ArrayList<Label>();
+        response = new ArrayList<Label>();
+        action = new ArrayList<Label>();
 
-        sessionUserChat.add(new Label(""));
+        action.add(new Label(""));
 
-        responseChat = new Label("Hello! How May I help you!");
-        responseChat.setTranslateY(5);
-        responseChat.setMaxWidth(200);
-        responseChat.setWrapText(true);
-        responseChat.setStyle(" -fx-background-color: #bee0f0;" + defaultStyle);
-        sessionBotChat.add(responseChat);
-        sessionPane.getChildren().add(sessionBotChat.get(sessionBotChat.size() - 1));
+        message = new Label("Hello! How May I help you!");
+        message.setTranslateY(5);
+        message.setTranslateX(5);
+        message.setMaxWidth(200);
+        message.setWrapText(true);
+        message.setStyle(" -fx-background-color: #bee0f0;" + defaultStyle);
+        response.add(message);
+        sessionPane.getChildren().add(response.get(response.size() - 1));
         session.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 
         resourcesPath = getResourcesPath();

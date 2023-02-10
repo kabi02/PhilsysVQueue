@@ -1778,8 +1778,6 @@
 0,_ PLEASE,*,*,<srai><star/></srai>,reductions1.aiml
 0,NO *,*,*,<srai>NO</srai> <sr/>,reductions1.aiml
 0,_ REALLY *,*,*,<srai><star/> <star index="2"/></srai>,reductions1.aiml
-0,WHAT IS MY NAME,*,*,<srai>MY NAME</srai>,reductions1.aiml
-0,MY NAME IS *,*,*,<srai>CALL ME <star/></srai>,reductions1.aiml
 0,_ VERY *,*,*,<srai><star/> <star index="2"/></srai>,reductions1.aiml
 0,WHAT IS YOUR NAME,*,*,<srai>NAME</srai>,reductions1.aiml
 0,_ JUST *,*,*,<srai><star/> <star index="2"/></srai>,reductions1.aiml

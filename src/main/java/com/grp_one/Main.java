@@ -16,7 +16,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stg) throws IOException {
         stage = stg;
-        setRoot("Login", "Login");
+        setRoot("chatbot", "Login");
         stage.show();
     }
 

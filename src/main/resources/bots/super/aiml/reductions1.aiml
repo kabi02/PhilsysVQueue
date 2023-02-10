@@ -2,7 +2,7 @@
 <aiml>
 <!-- File: reductions1.aiml -->
 <!-- Author: Dr. Richard S. Wallace -->
-<!-- Last modified: February 09, 2023 -->
+<!-- Last modified: February 10, 2023 -->
 <!--  -->
 <!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
 <!--  -->
@@ -5354,12 +5354,6 @@
 </category>
 <category><pattern>_ REALLY *</pattern>
 <template><srai><star/> <star index="2"/></srai></template>
-</category>
-<category><pattern>WHAT IS MY NAME</pattern>
-<template><srai>MY NAME</srai></template>
-</category>
-<category><pattern>MY NAME IS *</pattern>
-<template><srai>CALL ME <star/></srai></template>
 </category>
 <category><pattern>_ VERY *</pattern>
 <template><srai><star/> <star index="2"/></srai></template>

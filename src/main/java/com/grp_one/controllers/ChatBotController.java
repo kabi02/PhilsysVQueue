@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
@@ -28,12 +30,15 @@ import com.grp_one.Main;
 public class ChatBotController implements Initializable {
 
     private static final boolean TRACE_MODE = false;
-    private String defaultResponse = "Sensya na lods";
+    private String defaultResponse = "I'm sorry I coudln't understand.";
     private String defaultStyle = " -fx-background-radius: 15px;" + "-fx-border-radius: 15px;" + "-fx-padding: 5px;";
     private Double initXpos;
     private Double offsetPos = 0.0;
     private Double chatHeight;
+    private Double maxChatWidth = 250.0;
     private String resourcesPath;
+    private String userMsg = "";
+    private String botMsg = "";
     private Bot bot;
     private Chat chatSession;
 
@@ -42,6 +47,14 @@ public class ChatBotController implements Initializable {
     private ArrayList<Label> response;
     private ArrayList<Label> action;
     private ArrayList<String> chatHistory = new ArrayList<String>();
+
+    private enum Context {
+        PROFANITY,
+        HELP,
+        DEFAULT
+    }
+
+    private Context context = Context.DEFAULT;
 
     @FXML
     private AnchorPane suggestions;
@@ -81,39 +94,93 @@ public class ChatBotController implements Initializable {
 
     @FXML
     public void chatInteract(final KeyEvent event) throws Exception {
-        String inquiry = "";
+        // Resets User Message
+        userMsg = "";
+        // Process Chat if Enter is pressed
         if (event.getCode() == KeyCode.ENTER) {
-            inquiry = chatbox.getText();
+            userMsg = chatbox.getText();
+            userMsg = userMsg.trim().replaceAll(" +", " ");
             chatbox.clear();
-            if ((inquiry == null) || (inquiry.length() < 1))
+            // If no input when enter was pressed, return
+            if ((userMsg == null) || (userMsg.length() < 1))
                 return;
+
+            botReplyProcess();
+            getChatContext();
+            interceptMessages();
+            sessionPane.setMinHeight(chatHeight);
             // if (true)
             // System.out.println(
-            // "STATE=" + inquiry + ":THAT=" +
+            // "STATE=" + userMsg + ":THAT=" +
             // (chatSession.thatHistory.get(0)).get(0).toString()
             // + ":TOPIC=" + chatSession.predicates.get("topic"));
-            String response = chatSession.multisentenceRespond(inquiry);
+
             // while (response.contains("&lt;"))
             // response = response.replace("&lt;", "<");
             // while (response.contains("&gt;"))
             // response = response.replace("&gt;", ">");
             // System.out.println("Robot : " + response);
-            if ((chatSession.thatHistory.get(0)).get(0).toString().equalsIgnoreCase("unknown")) {
-                response = "I'm sorry I coudln't understand.";
-            }
-            chatHistory.add(inquiry);
-            chatHistory.add((chatSession.thatHistory.get(0)).get(0).toString());
+
+            // chatHistory.add(userMsg);
+            // chatHistory.add(botMsg);
             // System.out.println((chatSession.thatHistory.get(0)).get(0).toString());
-            userInquiry(inquiry);
-            botResponse(response);
-            sessionPane.setMinHeight(chatHeight);
 
         }
     }
 
-    private void userInquiry(String chat) {
+    private void botReplyProcess() {
+        botMsg = chatSession.multisentenceRespond(userMsg);
+        if ((chatSession.thatHistory.get(0)).get(0).toString().equalsIgnoreCase("unknown")) {
+            botMsg = defaultResponse;
+        }
+    }
+
+    private void getChatContext() {
+        if (botMsg.compareTo("PROFANITY") == 0)
+            context = Context.PROFANITY;
+        else if (botMsg.compareTo("HELP") == 0)
+            context = Context.HELP;
+        else
+            context = Context.DEFAULT;
+    }
+
+    private void interceptMessages() {
+        switch (context) {
+            case PROFANITY:
+                userMsg = ChatContextProvider.USERPROFANITY;
+                botMsg = chatSession.multisentenceRespond(ChatContextProvider.PROFANITYDISPATCH);
+                displayResponses();
+                return;
+            case HELP:
+                displayUserInquiry();
+                botMsg = chatSession.multisentenceRespond(ChatContextProvider.HELPDISPATCH);
+                botMsg = chatSession.multisentenceRespond(ChatContextProvider.HELPDISPATCHSTART);
+                displayBotResponse(action);
+                botMsg = chatSession.multisentenceRespond(ChatContextProvider.HELPDISPATCHLIST);
+                displayBotResponse(response);
+                botMsg = chatSession.multisentenceRespond(ChatContextProvider.HELPDISPATCHEND);
+                displayBotResponse(response);
+
+                return;
+            default:
+                displayResponses();
+                return;
+        }
+
+    }
+
+    private void displayResponses() {
+        displayUserInquiry();
+        displayBotResponse(action);
+    }
+
+    private void displayMultiResponse(String... responses) {
+
+    }
+
+    private void displayUserInquiry() {
         Label previous = response.get(response.size() - 1);
-        message = initMessage(chat);
+        message = initMessage(userMsg);
         message.setTranslateY((previous.getTranslateY() + previous.getHeight()) + 12);
         message.setStyle(" -fx-background-color: #bed0ef;" + defaultStyle);
         message.setVisible(false);
@@ -129,9 +196,9 @@ public class ChatBotController implements Initializable {
         // + (Main.getStage().getWidth() - message.getWidth()));
     }
 
-    private void botResponse(String chat) {
-        Label previous = action.get(action.size() - 1);
-        message = initMessage(chat);
+    private void displayBotResponse(ArrayList<Label> prevMsg) {
+        Label previous = prevMsg.get(prevMsg.size() - 1);
+        message = initMessage(botMsg);
         message.setTranslateX(5);
         message.setTranslateY((previous.getTranslateY() + previous.getHeight()) + 12);
         message.setStyle(" -fx-background-color: #bee0f0;" + defaultStyle);
@@ -146,7 +213,7 @@ public class ChatBotController implements Initializable {
 
     private Label initMessage(String chat) {
         Label newMessage = new Label(chat);
-        newMessage.setMaxWidth(200);
+        newMessage.setMaxWidth(maxChatWidth);
         newMessage.setWrapText(true);
         return newMessage;
     }
@@ -179,6 +246,18 @@ public class ChatBotController implements Initializable {
         response.add(message);
         sessionPane.getChildren().add(response.get(response.size() - 1));
         session.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+
+        // chatbox.textProperty().addListener(new ChangeListener<String>() {
+        // @Override
+        // public void changed(final ObservableValue<? extends String> ov, final String
+        // oldValue,
+        // final String newValue) {
+        // if (chatbox.getText().length() > 300) {
+        // String maxText = chatbox.getText().substring(0, 300);
+        // chatbox.setText(maxText);
+        // }
+        // }
+        // });
 
         resourcesPath = getResourcesPath();
         MagicStrings.default_bot_response = defaultResponse;

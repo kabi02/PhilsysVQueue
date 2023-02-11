@@ -1,0 +1,9 @@
+0,NATIONAL ID _,*,*,<srai>NATIONAL ID</srai>,reductions.aiml
+0,_ NATIONAL ID,*,*,<srai>NATIONAL ID</srai>,reductions.aiml
+0,_ NATIONAL ID *,*,*,<srai>NATIONAL ID</srai>,reductions.aiml
+0,HELP _,*,*,<srai>HELP</srai>,reductions.aiml
+0,_ HELP,*,*,<srai>HELP</srai>,reductions.aiml
+0,_ HELP *,*,*,<srai>HELP</srai>,reductions.aiml
+0,<SET>PROFANITY</SET> _,*,*,PROFANITY,reductions.aiml
+0,_ <SET>PROFANITY</SET>,*,*,PROFANITY,reductions.aiml
+0,_ <SET>PROFANITY</SET> *,*,*,PROFANITY,reductions.aiml

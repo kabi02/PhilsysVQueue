@@ -16,7 +16,11 @@
 <!--  -->
 <!-- For more information see http://www.alicebot.org -->
 <category><pattern>BUILD</pattern>
+<<<<<<< HEAD
 <template>Sat Feb 11 15:20:34 PST 2023</template>
+=======
+<template>Sat Feb 11 14:36:56 PST 2023</template>
+>>>>>>> def968dbf89e758a87557b3d0e4a9d2131ded3e9
 </category>
 <category><pattern>DELEVLOPMENT ENVIRONMENT</pattern>
 <template>Program AB 0.0.4.2 beta -- AI Foundation Reference AIML 2.0 implementation</template>

@@ -1,7 +1,6 @@
 package com.grp_one.controllers;
 
 import com.grp_one.SqlConnector;
-import com.mysql.cj.x.protobuf.MysqlxSql.StmtExecute;
 
 import java.net.URL;
 import java.util.ResourceBundle;

@@ -18,8 +18,8 @@
       <Label layoutX="54.0" layoutY="90.0" text="Email" />
       <TextField fx:id="emailFieldUser" layoutX="117.0" layoutY="86.0" prefHeight="25.0" prefWidth="176.0" promptText="Enter email" />
       <Label layoutX="54.0" layoutY="127.0" text="Password" />
-      <PasswordField fx:id="passFieldEmail" layoutX="117.0" layoutY="123.0" prefHeight="25.0" prefWidth="176.0" promptText="Enter password" />
-      <Button fx:id="loginBtn" layoutX="153.0" layoutY="165.0" mnemonicParsing="false" text="Login" />
+      <PasswordField fx:id="passFieldUser" layoutX="117.0" layoutY="123.0" prefHeight="25.0" prefWidth="176.0" promptText="Enter password" />
+      <Button fx:id="loginBtn" layoutX="153.0" layoutY="165.0" mnemonicParsing="false" onAction="#goToUserDashboard" text="Login" />
       <Hyperlink fx:id="signupLink" layoutX="78.0" layoutY="199.0" onAction="#userSignup" text="Don't have an account yet? Sign up" />
    </children>
 </AnchorPane>

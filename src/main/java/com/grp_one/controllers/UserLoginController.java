@@ -55,13 +55,16 @@ public class UserLoginController implements Initializable{
                 if(rs.getString("userEmail").equals(userEmail)) {
                     if(rs.getString("userPass").equals(userPass)) {
                         JOptionPane.showMessageDialog(null, "Login Success");
+                        Main.setRoot("userdashboard", "User Dashboard");
+                        Main.centerRoot();
+                        Main.showStage();
                     }
                     else {
-                        JOptionPane.showMessageDialog(null, "Incorrect Username/Password!");
+                        JOptionPane.showMessageDialog(null, "Incorrect Email/Password!");
                     }
                 }
                 else {
-                    JOptionPane.showMessageDialog(null, "Incorrect Username/Password!");
+                    JOptionPane.showMessageDialog(null, "Incorrect Email/Password!");
                 }
             }
         } catch (SQLException e) {

@@ -4,18 +4,23 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 
 import java.io.File;
 
@@ -31,7 +36,10 @@ public class ChatBotController implements Initializable {
 
     private static final boolean TRACE_MODE = false;
     private String defaultResponse = "I'm sorry I coudln't understand.";
-    private String defaultStyle = " -fx-background-radius: 15px;" + "-fx-border-radius: 15px;" + "-fx-padding: 5px;";
+    private String botLastMsgStyle = "-fx-background-color: #bee0f0; -fx-background-radius: 0px 15px 15px 15px; -fx-border-radius: 0px 15px 15px 15px;-fx-padding: 5px;";
+    private String botTopMsgStyle = "-fx-background-color: #bee0f0; -fx-background-radius: 15px 15px 15px 0px; -fx-border-radius: 15px 15px 15px 0px;-fx-padding: 5px;";
+    private String botMiddleStyle = "-fx-background-color: #bee0f0; -fx-background-radius: 0px 15px 15px 0px; -fx-border-radius: 15px 15px 15px 15px;-fx-padding: 5px;";
+    private String userStyle = "-fx-background-color: #bed0ef; -fx-background-radius: 15px 0px 15px 15px; -fx-border-radius: 15px 0px 15px 15px;-fx-padding: 5px 5px 5px 5px;";
     private Double initXpos;
     private Double offsetPos = 0.0;
     private Double chatHeight;
@@ -43,10 +51,20 @@ public class ChatBotController implements Initializable {
     private Chat chatSession;
 
     private Label message;
-    private AnchorPane sessionPane;
-    private ArrayList<Label> response;
-    private ArrayList<Label> action;
+    private AnchorPane sessionPane = new AnchorPane();
+    private ImageView botProfile;
+    private Image botImage = new Image(getResourcesPath() + "/imgs/bot.png");
+    private ArrayList<HBox> newResponse = new ArrayList<HBox>();
+    private ArrayList<Label> action = new ArrayList<Label>();
     private ArrayList<String> chatHistory = new ArrayList<String>();
+
+    private enum messagePosition {
+        TOP,
+        MIDDLE,
+        BOTTOM
+    }
+
+    private messagePosition msgPos = messagePosition.BOTTOM;
 
     private enum Context {
         PROFANITY,
@@ -57,11 +75,21 @@ public class ChatBotController implements Initializable {
     private Context context = Context.DEFAULT;
 
     @FXML
-    private AnchorPane suggestions;
+    private HBox suggestions;
+    @FXML
+    private AnchorPane messageContainer;
     @FXML
     private TextField chatbox;
     @FXML
     private ScrollPane session;
+    @FXML
+    private Button backTo;
+
+    @FXML
+    private void backToPressed(final ActionEvent event) throws Exception {
+        System.out.println("adadwa");
+        bot.writeAIMLFiles();
+    }
 
     @FXML
     private void enterSuggestions(final MouseEvent event) throws Exception {
@@ -80,7 +108,7 @@ public class ChatBotController implements Initializable {
         });
         suggestions.setOnMouseReleased(mousedPressedEvent -> {
             offsetPos = suggestions.getTranslateX();
-            System.out.println("Offset: " + offsetPos);
+            // System.out.println("Offset: " + offsetPos);
         });
         if (initXpos == null)
             initXpos = event.getX();
@@ -121,8 +149,6 @@ public class ChatBotController implements Initializable {
             // response = response.replace("&gt;", ">");
             // System.out.println("Robot : " + response);
 
-            // chatHistory.add(userMsg);
-            // chatHistory.add(botMsg);
             // System.out.println((chatSession.thatHistory.get(0)).get(0).toString());
 
         }
@@ -154,13 +180,10 @@ public class ChatBotController implements Initializable {
             case HELP:
                 displayUserInquiry();
                 botMsg = chatSession.multisentenceRespond(ChatContextProvider.HELPDISPATCH);
-                botMsg = chatSession.multisentenceRespond(ChatContextProvider.HELPDISPATCHSTART);
-                displayBotResponse(action);
-                botMsg = chatSession.multisentenceRespond(ChatContextProvider.HELPDISPATCHLIST);
-                displayBotResponse(response);
-                botMsg = chatSession.multisentenceRespond(ChatContextProvider.HELPDISPATCHEND);
-                displayBotResponse(response);
-
+                displayMultiResponse(
+                        chatSession.multisentenceRespond(ChatContextProvider.HELPDISPATCHSTART),
+                        chatSession.multisentenceRespond(ChatContextProvider.HELPDISPATCHLIST),
+                        chatSession.multisentenceRespond(ChatContextProvider.HELPDISPATCHEND));
                 return;
             default:
                 displayResponses();
@@ -170,19 +193,34 @@ public class ChatBotController implements Initializable {
     }
 
     private void displayResponses() {
+        instanceBotProfile();
         displayUserInquiry();
-        displayBotResponse(action);
+        displayBotResponse(action.get(action.size() - 1));
     }
 
     private void displayMultiResponse(String... responses) {
-
+        instanceBotProfile();
+        for (int i = 0; i < responses.length; i++) {
+            botMsg = responses[i];
+            if (i == 0) {
+                msgPos = messagePosition.TOP;
+                displayBotResponse(action.get(action.size() - 1));
+            } else if (i < responses.length - 1) {
+                msgPos = messagePosition.MIDDLE;
+                displayBotResponse(newResponse.get(newResponse.size() - 1));
+            } else {
+                msgPos = messagePosition.BOTTOM;
+                displayBotResponse(newResponse.get(newResponse.size() - 1));
+            }
+        }
     }
 
     private void displayUserInquiry() {
-        Label previous = response.get(response.size() - 1);
+        HBox previous = newResponse.get(newResponse.size() - 1);
+        // System.out.println(previous.getTranslateY());
         message = initMessage(userMsg);
-        message.setTranslateY((previous.getTranslateY() + previous.getHeight()) + 12);
-        message.setStyle(" -fx-background-color: #bed0ef;" + defaultStyle);
+        message.setTranslateY((previous.getTranslateY() + previous.getHeight()) + 7);
+        message.setStyle(userStyle);
         message.setVisible(false);
         action.add(message);
         sessionPane.getChildren().add(action.get(action.size() - 1));
@@ -191,24 +229,43 @@ public class ChatBotController implements Initializable {
         sessionPane.getChildren().get(sessionPane.getChildren().size() - 1)
                 .setTranslateX(Main.getStage().getWidth() - message.getWidth() - 35);
         sessionPane.getChildren().get(sessionPane.getChildren().size() - 1).setVisible(true);
+        chatHistory.add(userMsg);
         // System.out.println(Main.getStage().getWidth() + " " + message.getWidth()
         // + " "
         // + (Main.getStage().getWidth() - message.getWidth()));
     }
 
-    private void displayBotResponse(ArrayList<Label> prevMsg) {
-        Label previous = prevMsg.get(prevMsg.size() - 1);
+    private void displayBotResponse(Region prevMsg) {
+        HBox botMsgContainer = initBotMessage(prevMsg);
+        newResponse.add(botMsgContainer);
+        sessionPane.getChildren().add(newResponse.get(newResponse.size() - 1));
+        session.vvalueProperty().bind(sessionPane.heightProperty());
+        chatHistory.add(botMsg);
+        msgPos = messagePosition.BOTTOM;
+        // chatSession.thatHistory.printHistory();
+    }
+
+    private HBox initBotMessage(Region prevMsg) {
+
         message = initMessage(botMsg);
-        message.setTranslateX(5);
-        message.setTranslateY((previous.getTranslateY() + previous.getHeight()) + 12);
-        message.setStyle(" -fx-background-color: #bee0f0;" + defaultStyle);
-        response.add(message);
-        sessionPane.getChildren().add(response.get(response.size() - 1));
+        message.setStyle(botLastMsgStyle);
+        message.setTranslateY(6);
+        if (msgPos == messagePosition.MIDDLE) {
+            message.setStyle(botMiddleStyle);
+            message.setTranslateX(30);
+        } else if (msgPos == messagePosition.TOP) {
+            message.setStyle(botTopMsgStyle);
+            message.setTranslateX(30);
+        }
+        HBox botMsgContainer = new HBox();
+        botMsgContainer.getChildren().add(botProfile);
+        botMsgContainer.getChildren().add(message);
+        botMsgContainer.setTranslateX(5);
         sessionPane.applyCss();
         sessionPane.layout();
-        session.vvalueProperty().bind(sessionPane.heightProperty());
-        chatHeight = message.getHeight() + message.getTranslateY() + 20;
-        // chatSession.thatHistory.printHistory();
+        botMsgContainer.setTranslateY((prevMsg.getTranslateY() + prevMsg.getHeight()) + 2);
+        chatHeight = botMsgContainer.getHeight() + botMsgContainer.getTranslateY() + 40;
+        return botMsgContainer;
     }
 
     private Label initMessage(String chat) {
@@ -222,43 +279,44 @@ public class ChatBotController implements Initializable {
         File currDir = new File(".");
         String path = currDir.getAbsolutePath();
         path = path.substring(0, path.length() - 2);
-        System.out.println(path);
+        // System.out.println(path);
         String resourcesPath = path + File.separator + "src" + File.separator + "main" + File.separator + "resources";
         return resourcesPath;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        sessionPane = new AnchorPane();
-        session.setContent(sessionPane);
+    private void instanceBotProfile() {
+        botProfile = new ImageView(botImage);
+        botProfile.setFitWidth(30);
+        botProfile.setFitHeight(30);
+        botProfile.setStyle("-fx-margin: 0 20 0 0;");
+    }
 
-        response = new ArrayList<Label>();
-        action = new ArrayList<Label>();
+    private void botInit() {
+        resourcesPath = getResourcesPath();
+        MagicStrings.default_bot_response = defaultResponse;
+        MagicBooleans.trace_mode = TRACE_MODE;
+        bot = new Bot("super", resourcesPath);
+        chatSession = new Chat(bot);
+        chatSession.customerId = "guest";
+        bot.brain.nodeStats();
+    }
+
+    private void chatInit() {
+        instanceBotProfile();
+        session.setContent(sessionPane);
 
         action.add(new Label(""));
 
-        message = new Label("Hello! How May I help you!");
-        message.setTranslateY(5);
-        message.setTranslateX(5);
-        message.setMaxWidth(200);
-        message.setWrapText(true);
-        message.setStyle(" -fx-background-color: #bee0f0;" + defaultStyle);
-        response.add(message);
-        sessionPane.getChildren().add(response.get(response.size() - 1));
+        botMsg = chatSession.multisentenceRespond(ChatContextProvider.BOTINTRODISPATCH);
+        displayBotResponse(action.get(action.size() - 1));
         session.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 
-        // chatbox.textProperty().addListener(new ChangeListener<String>() {
-        // @Override
-        // public void changed(final ObservableValue<? extends String> ov, final String
-        // oldValue,
-        // final String newValue) {
-        // if (chatbox.getText().length() > 300) {
-        // String maxText = chatbox.getText().substring(0, 300);
-        // chatbox.setText(maxText);
-        // }
-        // }
-        // });
+        suggestions.setSpacing(15.0);
+        suggestions.setAlignment(Pos.CENTER_LEFT);
+    }
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
         resourcesPath = getResourcesPath();
         MagicStrings.default_bot_response = defaultResponse;
         MagicBooleans.trace_mode = TRACE_MODE;
@@ -267,6 +325,9 @@ public class ChatBotController implements Initializable {
         chatSession.customerId = "guest";
         bot.writeAIMLFiles();
         bot.brain.nodeStats();
+        chatInit();
+        //
+
     }
 
 }

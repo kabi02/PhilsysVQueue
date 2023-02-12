@@ -42,4 +42,12 @@
 <category><pattern>_ <SET>PROFANITY</SET> *</pattern>
 <template>PROFANITY</template>
 </category>
+<category><pattern>SPEAK TO ME</pattern>
+<template><condition name="language">
+    <li value="tagalog"> TAGALOG </li>
+    <li value="unknown">unaccessable</li>
+    <li value="within">unaccessable</li>
+    <li>adwadawawdwad</li>
+</condition></template>
+</category>
 </aiml>

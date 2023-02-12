@@ -15,5 +15,7 @@
 <!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
 <!--  -->
 <!-- For more information see http://www.alicebot.org -->
-
+<category><pattern>BOTINTRODUCTIONID1000</pattern>
+<template><think><set name="language">tagalog</set></think>Hello <map name="userInfo">name</map>! I am Philcee. Nice to meet you</template>
+</category>
 </aiml>

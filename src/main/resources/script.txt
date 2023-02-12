@@ -1,6 +1,7 @@
 /*
 # 		- SINGLE LINE
 ## 		- MULTI LINE
+###		- MULTI RESPONSE
 >		- REPONSE
 <		- PRESET/INTERCEPT
 -tag-		- TAG
@@ -12,8 +13,9 @@ Hello -map:USER-, How may I help you
 
 ----------------PRESETS----------------
 <APPLICATION
-##
-
+###
+.
+.Make sure your documents match your input credentials!
 
 ----------------TEMPLATE----------------
 
@@ -43,6 +45,7 @@ https://www.philsys.gov.ph/faq/
 		##
 		To reapply, you may want to
 		-srai:APPLICATION--
+		
 
 
 

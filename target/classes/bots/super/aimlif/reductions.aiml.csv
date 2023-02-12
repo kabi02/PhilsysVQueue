@@ -7,3 +7,4 @@
 0,<SET>PROFANITY</SET> _,*,*,PROFANITY,reductions.aiml
 0,_ <SET>PROFANITY</SET>,*,*,PROFANITY,reductions.aiml
 0,_ <SET>PROFANITY</SET> *,*,*,PROFANITY,reductions.aiml
+0,SPEAK TO ME,*,*,<condition name="language">#Newline    <li value="tagalog"> TAGALOG </li>#Newline    <li value="unknown">unaccessable</li>#Newline    <li value="within">unaccessable</li>#Newline    <li>adwadawawdwad</li>#Newline</condition>,reductions.aiml

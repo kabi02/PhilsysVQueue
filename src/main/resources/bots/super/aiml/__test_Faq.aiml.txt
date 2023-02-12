@@ -2,7 +2,7 @@
 <aiml>
 <!-- File: __test_Faq.aiml -->
 <!-- Author: Dr. Richard S. Wallace -->
-<!-- Last modified: February 11, 2023 -->
+<!-- Last modified: February 12, 2023 -->
 <!--  -->
 <!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
 <!--  -->
@@ -15,10 +15,6 @@
 <!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
 <!--  -->
 <!-- For more information see http://www.alicebot.org -->
-<category><pattern>NATIONAL ID</pattern>
-<template>Here is how
-The process involves</template>
-</category>
 <category><pattern><SET>TEST</SET></pattern>
 <template>Today is <date format="%B %d, %Y" jformat="MMMMMMMMM dd, YYYY"/></template>
 </category>

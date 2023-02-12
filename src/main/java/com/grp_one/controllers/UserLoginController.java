@@ -9,15 +9,19 @@ import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ButtonBar.ButtonData;
 
 import com.grp_one.*;
 import java.sql.*;
 
-public class UserLoginController implements Initializable{
+public class UserLoginController implements Initializable {
     SqlConnector dbConn = new SqlConnector();
+    Dialog<String> dialog = new Dialog<>();
 
     @FXML
     private TextField emailFieldUser;
@@ -39,7 +43,8 @@ public class UserLoginController implements Initializable{
     }
 
     @FXML
-    void goToUserDashboard(ActionEvent event) throws Exception{
+    void goToUserDashboard(ActionEvent event) throws Exception {
+
         Connection conn = dbConn.dbConn();
         Statement stmt = null;
         ResultSet rs = null;
@@ -47,33 +52,43 @@ public class UserLoginController implements Initializable{
         userEmail = emailFieldUser.getText();
         userPass = passFieldUser.getText();
         System.out.println("Email: " + userEmail + "\nPassword: " + userPass);
-        try {
-            String sql = "select * from user.userlogincreds where userEmail = \"" + userEmail + "\" and userPass = \"" + userPass + "\"";
-            stmt = conn.prepareStatement(sql);
-            rs = stmt.executeQuery(sql);
-            while(rs.next()) {
-                if(rs.getString("userEmail").equals(userEmail)) {
-                    if(rs.getString("userPass").equals(userPass)) {
-                        JOptionPane.showMessageDialog(null, "Login Success");
-                        Main.setRoot("userdashboard", "User Dashboard");
-                        Main.centerRoot();
-                        Main.showStage();
-                    }
-                    else {
-                        JOptionPane.showMessageDialog(null, "Incorrect Email/Password!");
+        if (conn != null) {
+            try {
+                String sql = "select * from admin.userlogincreds where userEmail = \"" + userEmail
+                        + "\" and userPass = \""
+                        + userPass + "\"";
+                stmt = conn.prepareStatement(sql);
+                rs = stmt.executeQuery(sql);
+                while (rs.next()) {
+                    if (rs.getString("userEmail").equals(userEmail)) {
+                        if (rs.getString("userPass").equals(userPass)) {
+                            dialog.setContentText("Login Succesful!");
+                            dialog.showAndWait();
+                            Main.setRoot("userdashboard", "User Dashboard");
+                            Main.centerRoot();
+                            Main.showStage();
+                        } else {
+                            dialog.setContentText("Incorrect Username or password.");
+                            dialog.showAndWait();
+                        }
+                    } else {
+                        dialog.setContentText("Incorrect Username or password.");
+                        dialog.showAndWait();
                     }
                 }
-                else {
-                    JOptionPane.showMessageDialog(null, "Incorrect Email/Password!");
-                }
+            } catch (SQLException e) {
+                System.out.println(e);
             }
-        } catch (SQLException e) {
-            System.out.println(e);
+        } else {
+            dialog.setContentText("Failed to connect.");
+            dialog.showAndWait();
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        dialog.setTitle("Dialog");
+        ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().add(type);
     }
 }

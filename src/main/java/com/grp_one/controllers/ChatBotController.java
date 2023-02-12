@@ -1,6 +1,7 @@
 package com.grp_one.controllers;
 
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -10,7 +11,9 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -22,7 +25,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStreamReader;
 
 import org.alicebot.ab.Bot;
 import org.alicebot.ab.Chat;
@@ -30,12 +35,13 @@ import org.alicebot.ab.History;
 import org.alicebot.ab.MagicBooleans;
 import org.alicebot.ab.MagicStrings;
 
+import com.grp_one.*;
 import com.grp_one.Main;
 
 public class ChatBotController implements Initializable {
 
     private static final boolean TRACE_MODE = false;
-    private String defaultResponse = "I'm sorry I coudln't understand.";
+    private String defaultResponse = "No response yet.";
     private String botLastMsgStyle = "-fx-background-color: #bee0f0; -fx-background-radius: 0px 15px 15px 15px; -fx-border-radius: 0px 15px 15px 15px;-fx-padding: 5px;";
     private String botTopMsgStyle = "-fx-background-color: #bee0f0; -fx-background-radius: 15px 15px 15px 0px; -fx-border-radius: 15px 15px 15px 0px;-fx-padding: 5px;";
     private String botMiddleStyle = "-fx-background-color: #bee0f0; -fx-background-radius: 0px 15px 15px 0px; -fx-border-radius: 15px 15px 15px 15px;-fx-padding: 5px;";
@@ -47,6 +53,7 @@ public class ChatBotController implements Initializable {
     private String resourcesPath;
     private String userMsg = "";
     private String botMsg = "";
+    private boolean fromSuggestions = false;
     private Bot bot;
     private Chat chatSession;
 
@@ -69,6 +76,7 @@ public class ChatBotController implements Initializable {
     private enum Context {
         PROFANITY,
         HELP,
+        APPLY,
         DEFAULT
     }
 
@@ -76,6 +84,17 @@ public class ChatBotController implements Initializable {
 
     @FXML
     private HBox suggestions;
+    @FXML
+    private Button suggestion_1;
+    @FXML
+    private Button suggestion_2;
+    @FXML
+    private Button suggestion_3;
+    @FXML
+    private Button suggestion_4;
+    @FXML
+    private Button suggestion_5;
+
     @FXML
     private AnchorPane messageContainer;
     @FXML
@@ -87,22 +106,22 @@ public class ChatBotController implements Initializable {
 
     @FXML
     private void backToPressed(final ActionEvent event) throws Exception {
-        System.out.println("adadwa");
-        bot.writeAIMLFiles();
+        ChatBot.getStage().hide();
     }
 
     @FXML
     private void enterSuggestions(final MouseEvent event) throws Exception {
-        Main.getStage().getScene().setCursor(Cursor.HAND);
+        // Main.getStage().getScene().setCursor(Cursor.HAND);
     }
 
     @FXML
     private void exitSuggestions(final MouseEvent event) throws Exception {
-        Main.getStage().getScene().setCursor(Cursor.DEFAULT);
+        // Main.getStage().getScene().setCursor(Cursor.DEFAULT);
     }
 
     @FXML
     private void dragSuggestions(final MouseEvent event) throws Exception {
+        bot.writeAIMLFiles();
         suggestions.setOnMousePressed(mousedPressedEvent -> {
             initXpos = mousedPressedEvent.getSceneX();
         });
@@ -115,8 +134,8 @@ public class ChatBotController implements Initializable {
         suggestions.setTranslateX(event.getSceneX() - initXpos + offsetPos);
         if (suggestions.getTranslateX() > 0) {
             suggestions.setTranslateX(0.0);
-        } else if (suggestions.getTranslateX() < Main.getStage().getWidth() - suggestions.getWidth()) {
-            suggestions.setTranslateX(Main.getStage().getWidth() - suggestions.getWidth());
+        } else if (suggestions.getTranslateX() - 25 < ChatBot.getStage().getWidth() - suggestions.getWidth()) {
+            suggestions.setTranslateX(ChatBot.getStage().getWidth() - suggestions.getWidth());
         }
     }
 
@@ -137,20 +156,6 @@ public class ChatBotController implements Initializable {
             getChatContext();
             interceptMessages();
             sessionPane.setMinHeight(chatHeight);
-            // if (true)
-            // System.out.println(
-            // "STATE=" + userMsg + ":THAT=" +
-            // (chatSession.thatHistory.get(0)).get(0).toString()
-            // + ":TOPIC=" + chatSession.predicates.get("topic"));
-
-            // while (response.contains("&lt;"))
-            // response = response.replace("&lt;", "<");
-            // while (response.contains("&gt;"))
-            // response = response.replace("&gt;", ">");
-            // System.out.println("Robot : " + response);
-
-            // System.out.println((chatSession.thatHistory.get(0)).get(0).toString());
-
         }
     }
 
@@ -166,6 +171,8 @@ public class ChatBotController implements Initializable {
             context = Context.PROFANITY;
         else if (botMsg.compareTo("HELP") == 0)
             context = Context.HELP;
+        else if (botMsg.compareTo("APPLY") == 0)
+            context = Context.APPLY;
         else
             context = Context.DEFAULT;
     }
@@ -185,11 +192,47 @@ public class ChatBotController implements Initializable {
                         chatSession.multisentenceRespond(ChatContextProvider.HELPDISPATCHLIST),
                         chatSession.multisentenceRespond(ChatContextProvider.HELPDISPATCHEND));
                 return;
+            case APPLY:
+                // displayUserInquiry();
+                // botMsg = chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCH);
+                // botMsg =
+                // chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCHSTART);
+                // displayBotResponse(action.get(action.size() - 1));
+                // botMsg =
+                // chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCH2ND);
+                // displayBotResponse(newResponse.get(newResponse.size() - 1));
+                // botMsg =
+                // chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCH3RD);
+                // displayBotResponse(newResponse.get(newResponse.size() - 1));
+                // botMsg =
+                // chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCHLIST);
+                // displayBotResponse(newResponse.get(newResponse.size() - 1));
+                // botMsg =
+                // chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCHEND);
+                // displayBotResponse(newResponse.get(newResponse.size() - 1));
+                displayUserInquiry();
+                botMsg = chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCH);
+                displayMultiResponse(
+                        chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCHSTART),
+                        chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCH2ND),
+                        chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCH3RD),
+                        chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCHLIST),
+                        chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCHEND));
+                return;
             default:
                 displayResponses();
                 return;
         }
 
+    }
+
+    private void suggestionsResponses(String suggestion) {
+        userMsg = suggestion;
+        instanceBotProfile();
+        botReplyProcess();
+        getChatContext();
+        interceptMessages();
+        sessionPane.setMinHeight(chatHeight);
     }
 
     private void displayResponses() {
@@ -219,7 +262,7 @@ public class ChatBotController implements Initializable {
         HBox previous = newResponse.get(newResponse.size() - 1);
         // System.out.println(previous.getTranslateY());
         message = initMessage(userMsg);
-        message.setTranslateY((previous.getTranslateY() + previous.getHeight()) + 7);
+        message.setTranslateY((previous.getTranslateY() + previous.getHeight()) + 12);
         message.setStyle(userStyle);
         message.setVisible(false);
         action.add(message);
@@ -227,7 +270,7 @@ public class ChatBotController implements Initializable {
         sessionPane.applyCss();
         sessionPane.layout();
         sessionPane.getChildren().get(sessionPane.getChildren().size() - 1)
-                .setTranslateX(Main.getStage().getWidth() - message.getWidth() - 35);
+                .setTranslateX(ChatBot.getStage().getWidth() - message.getWidth() - 35);
         sessionPane.getChildren().get(sessionPane.getChildren().size() - 1).setVisible(true);
         chatHistory.add(userMsg);
         // System.out.println(Main.getStage().getWidth() + " " + message.getWidth()
@@ -238,6 +281,7 @@ public class ChatBotController implements Initializable {
     private void displayBotResponse(Region prevMsg) {
         HBox botMsgContainer = initBotMessage(prevMsg);
         newResponse.add(botMsgContainer);
+        sessionPane.setMinHeight(chatHeight);
         sessionPane.getChildren().add(newResponse.get(newResponse.size() - 1));
         session.vvalueProperty().bind(sessionPane.heightProperty());
         chatHistory.add(botMsg);
@@ -246,7 +290,6 @@ public class ChatBotController implements Initializable {
     }
 
     private HBox initBotMessage(Region prevMsg) {
-
         message = initMessage(botMsg);
         message.setStyle(botLastMsgStyle);
         message.setTranslateY(6);
@@ -260,11 +303,13 @@ public class ChatBotController implements Initializable {
         HBox botMsgContainer = new HBox();
         botMsgContainer.getChildren().add(botProfile);
         botMsgContainer.getChildren().add(message);
+        botMsgContainer.setAlignment(Pos.BOTTOM_LEFT);
         botMsgContainer.setTranslateX(5);
         sessionPane.applyCss();
         sessionPane.layout();
-        botMsgContainer.setTranslateY((prevMsg.getTranslateY() + prevMsg.getHeight()) + 2);
-        chatHeight = botMsgContainer.getHeight() + botMsgContainer.getTranslateY() + 40;
+        botMsgContainer.setTranslateY((prevMsg.getTranslateY() + prevMsg.getHeight()) + 1);
+        chatHeight = botMsgContainer.getHeight() + botMsgContainer.getTranslateY() + 80;
+
         return botMsgContainer;
     }
 
@@ -275,7 +320,7 @@ public class ChatBotController implements Initializable {
         return newMessage;
     }
 
-    private static String getResourcesPath() {
+    public static String getResourcesPath() {
         File currDir = new File(".");
         String path = currDir.getAbsolutePath();
         path = path.substring(0, path.length() - 2);
@@ -284,21 +329,44 @@ public class ChatBotController implements Initializable {
         return resourcesPath;
     }
 
+    private void initFAQButtons() {
+        suggestion_1.setText(ChatContextProvider.FAQ_1);
+        suggestion_2.setText(ChatContextProvider.FAQ_2);
+        suggestion_3.setText(ChatContextProvider.FAQ_3);
+        suggestion_4.setText(ChatContextProvider.FAQ_4);
+        suggestion_5.setText(ChatContextProvider.FAQ_5);
+        suggestion_1.setWrapText(true);
+        suggestion_2.setWrapText(true);
+        suggestion_3.setWrapText(true);
+        suggestion_4.setWrapText(true);
+        suggestion_5.setWrapText(true);
+        suggestion_1.setMaxWidth(250);
+        suggestion_2.setMaxWidth(250);
+        suggestion_3.setMaxWidth(250);
+        suggestion_4.setMaxWidth(250);
+        suggestion_5.setMaxWidth(250);
+        suggestion_1.setOnAction(event -> suggestionsResponses(suggestion_1.getText()));
+        suggestion_2.setOnAction(event -> suggestionsResponses(suggestion_2.getText()));
+        suggestion_3.setOnAction(event -> suggestionsResponses(suggestion_3.getText()));
+        suggestion_4.setOnAction(event -> suggestionsResponses(suggestion_4.getText()));
+        suggestion_5.setOnAction(event -> {
+
+            try {
+
+                String a = "https://www.philsys.gov.ph/";
+                java.awt.Desktop.getDesktop().browse(java.net.URI.create(a));
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
     private void instanceBotProfile() {
         botProfile = new ImageView(botImage);
         botProfile.setFitWidth(30);
         botProfile.setFitHeight(30);
         botProfile.setStyle("-fx-margin: 0 20 0 0;");
-    }
-
-    private void botInit() {
-        resourcesPath = getResourcesPath();
-        MagicStrings.default_bot_response = defaultResponse;
-        MagicBooleans.trace_mode = TRACE_MODE;
-        bot = new Bot("super", resourcesPath);
-        chatSession = new Chat(bot);
-        chatSession.customerId = "guest";
-        bot.brain.nodeStats();
     }
 
     private void chatInit() {
@@ -322,9 +390,10 @@ public class ChatBotController implements Initializable {
         MagicBooleans.trace_mode = TRACE_MODE;
         bot = new Bot("super", resourcesPath);
         chatSession = new Chat(bot);
-        chatSession.customerId = "guest";
+        chatSession.customerId = "  guest";
         bot.writeAIMLFiles();
         bot.brain.nodeStats();
+        initFAQButtons();
         chatInit();
         //
 

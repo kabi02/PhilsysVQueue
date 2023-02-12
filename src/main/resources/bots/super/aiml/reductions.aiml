@@ -2,7 +2,7 @@
 <aiml>
 <!-- File: reductions.aiml -->
 <!-- Author: Dr. Richard S. Wallace -->
-<!-- Last modified: February 11, 2023 -->
+<!-- Last modified: February 12, 2023 -->
 <!--  -->
 <!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
 <!--  -->
@@ -15,14 +15,17 @@
 <!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
 <!--  -->
 <!-- For more information see http://www.alicebot.org -->
-<category><pattern>NATIONAL ID _</pattern>
-<template><srai>NATIONAL ID</srai></template>
+<category><pattern>APPLY</pattern>
+<template><srai>ID APPLICATION</srai></template>
 </category>
-<category><pattern>_ NATIONAL ID</pattern>
-<template><srai>NATIONAL ID</srai></template>
+<category><pattern>APPLY _</pattern>
+<template><srai>ID APPLICATION</srai></template>
 </category>
-<category><pattern>_ NATIONAL ID *</pattern>
-<template><srai>NATIONAL ID</srai></template>
+<category><pattern>_ APPLY</pattern>
+<template><srai>ID APPLICATION</srai></template>
+</category>
+<category><pattern>_ APPLY *</pattern>
+<template><srai>ID APPLICATION</srai></template>
 </category>
 <category><pattern>HELP _</pattern>
 <template><srai>HELP</srai></template>
@@ -41,13 +44,5 @@
 </category>
 <category><pattern>_ <SET>PROFANITY</SET> *</pattern>
 <template>PROFANITY</template>
-</category>
-<category><pattern>SPEAK TO ME</pattern>
-<template><condition name="language">
-    <li value="tagalog"> TAGALOG </li>
-    <li value="unknown">unaccessable</li>
-    <li value="within">unaccessable</li>
-    <li>adwadawawdwad</li>
-</condition></template>
 </category>
 </aiml>

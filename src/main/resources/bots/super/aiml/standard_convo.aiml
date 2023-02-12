@@ -2,7 +2,7 @@
 <aiml>
 <!-- File: standard_convo.aiml -->
 <!-- Author: Dr. Richard S. Wallace -->
-<!-- Last modified: February 11, 2023 -->
+<!-- Last modified: February 12, 2023 -->
 <!--  -->
 <!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
 <!--  -->
@@ -16,6 +16,6 @@
 <!--  -->
 <!-- For more information see http://www.alicebot.org -->
 <category><pattern>BOTINTRODUCTIONID1000</pattern>
-<template><think><set name="language">tagalog</set></think>Hello <map name="userInfo">name</map>! I am Philcee. Nice to meet you</template>
+<template>Hello! I am Philcee. Nice to meet you</template>
 </category>
 </aiml>

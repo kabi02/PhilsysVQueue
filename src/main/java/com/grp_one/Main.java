@@ -9,6 +9,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class Main extends Application {
     private static Stage stage;
@@ -16,7 +17,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stg) throws IOException {
         stage = stg;
-        setRoot("userlogin", "User Login");
+        setRoot("userlogin", "Login");
         stage.show();
     }
 

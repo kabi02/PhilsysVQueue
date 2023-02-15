@@ -53,7 +53,6 @@ public class ChatBotController implements Initializable {
     private String resourcesPath;
     private String userMsg = "";
     private String botMsg = "";
-    private boolean fromSuggestions = false;
     private Bot bot;
     private Chat chatSession;
 
@@ -77,6 +76,9 @@ public class ChatBotController implements Initializable {
         PROFANITY,
         HELP,
         APPLY,
+        BIOMETRICS,
+        CLAIM,
+        DOCUMENT,
         DEFAULT
     }
 
@@ -121,7 +123,6 @@ public class ChatBotController implements Initializable {
 
     @FXML
     private void dragSuggestions(final MouseEvent event) throws Exception {
-        bot.writeAIMLFiles();
         suggestions.setOnMousePressed(mousedPressedEvent -> {
             initXpos = mousedPressedEvent.getSceneX();
         });
@@ -173,6 +174,12 @@ public class ChatBotController implements Initializable {
             context = Context.HELP;
         else if (botMsg.compareTo("APPLY") == 0)
             context = Context.APPLY;
+        else if (botMsg.compareTo("BIO BEGIN") == 0)
+            context = Context.BIOMETRICS;
+        else if (botMsg.compareTo("GET ID") == 0)
+            context = Context.CLAIM;
+        else if (botMsg.compareTo("DOCUMENT") == 0)
+            context = Context.DOCUMENT;
         else
             context = Context.DEFAULT;
     }
@@ -193,23 +200,6 @@ public class ChatBotController implements Initializable {
                         chatSession.multisentenceRespond(ChatContextProvider.HELPDISPATCHEND));
                 return;
             case APPLY:
-                // displayUserInquiry();
-                // botMsg = chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCH);
-                // botMsg =
-                // chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCHSTART);
-                // displayBotResponse(action.get(action.size() - 1));
-                // botMsg =
-                // chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCH2ND);
-                // displayBotResponse(newResponse.get(newResponse.size() - 1));
-                // botMsg =
-                // chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCH3RD);
-                // displayBotResponse(newResponse.get(newResponse.size() - 1));
-                // botMsg =
-                // chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCHLIST);
-                // displayBotResponse(newResponse.get(newResponse.size() - 1));
-                // botMsg =
-                // chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCHEND);
-                // displayBotResponse(newResponse.get(newResponse.size() - 1));
                 displayUserInquiry();
                 botMsg = chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCH);
                 displayMultiResponse(
@@ -218,6 +208,38 @@ public class ChatBotController implements Initializable {
                         chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCH3RD),
                         chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCHLIST),
                         chatSession.multisentenceRespond(ChatContextProvider.APPLYDISPATCHEND));
+                return;
+            case BIOMETRICS:
+                botMsg = chatSession.multisentenceRespond(ChatContextProvider.BIODISPATCH);
+                displayResponses();
+                return;
+            case CLAIM:
+                displayUserInquiry();
+                displayMultiResponse(
+                        chatSession.multisentenceRespond(ChatContextProvider.CLAIMDISPATCH),
+                        chatSession.multisentenceRespond(ChatContextProvider.CLAIMDISPATCH2ND),
+                        chatSession.multisentenceRespond(ChatContextProvider.CLAIMDISPATCH3RD));
+                return;
+            case DOCUMENT:
+                System.out.println(botMsg);
+
+                displayUserInquiry();
+                displayMultiResponse(
+                        chatSession.multisentenceRespond(ChatContextProvider.DOCDISPATCHAA),
+                        chatSession.multisentenceRespond(ChatContextProvider.DOCDISPATCHAB),
+                        chatSession.multisentenceRespond(ChatContextProvider.DOCDISPATCHAC),
+                        chatSession.multisentenceRespond(ChatContextProvider.DOCDISPATCHAD),
+                        chatSession.multisentenceRespond(ChatContextProvider.DOCDISPATCHAE),
+                        chatSession.multisentenceRespond(ChatContextProvider.DOCDISPATCHAF),
+                        chatSession.multisentenceRespond(ChatContextProvider.DOCDISPATCHBA),
+                        chatSession.multisentenceRespond(ChatContextProvider.DOCDISPATCHBB),
+                        chatSession.multisentenceRespond(ChatContextProvider.DOCDISPATCHBC),
+                        chatSession.multisentenceRespond(ChatContextProvider.DOCDISPATCHBD),
+                        chatSession.multisentenceRespond(ChatContextProvider.DOCDISPATCHBE),
+                        chatSession.multisentenceRespond(ChatContextProvider.DOCDISPATCHCA),
+                        chatSession.multisentenceRespond(ChatContextProvider.DOCDISPATCHCB),
+                        chatSession.multisentenceRespond(ChatContextProvider.DOCDISPATCHCC));
+                chatHeight += 40;
                 return;
             default:
                 displayResponses();
@@ -270,7 +292,7 @@ public class ChatBotController implements Initializable {
         sessionPane.applyCss();
         sessionPane.layout();
         sessionPane.getChildren().get(sessionPane.getChildren().size() - 1)
-                .setTranslateX(ChatBot.getStage().getWidth() - message.getWidth() - 35);
+                .setTranslateX(ChatBot.getStage().getWidth() - message.getWidth() - 40);
         sessionPane.getChildren().get(sessionPane.getChildren().size() - 1).setVisible(true);
         chatHistory.add(userMsg);
         // System.out.println(Main.getStage().getWidth() + " " + message.getWidth()
@@ -295,15 +317,15 @@ public class ChatBotController implements Initializable {
         message.setTranslateY(6);
         if (msgPos == messagePosition.MIDDLE) {
             message.setStyle(botMiddleStyle);
-            message.setTranslateX(30);
+            message.setTranslateX(40);
         } else if (msgPos == messagePosition.TOP) {
             message.setStyle(botTopMsgStyle);
-            message.setTranslateX(30);
+            message.setTranslateX(40);
         }
         HBox botMsgContainer = new HBox();
         botMsgContainer.getChildren().add(botProfile);
         botMsgContainer.getChildren().add(message);
-        botMsgContainer.setAlignment(Pos.BOTTOM_LEFT);
+        botMsgContainer.setAlignment(Pos.TOP_LEFT);
         botMsgContainer.setTranslateX(5);
         sessionPane.applyCss();
         sessionPane.layout();
@@ -364,8 +386,8 @@ public class ChatBotController implements Initializable {
 
     private void instanceBotProfile() {
         botProfile = new ImageView(botImage);
-        botProfile.setFitWidth(30);
-        botProfile.setFitHeight(30);
+        botProfile.setFitWidth(40);
+        botProfile.setFitHeight(40);
         botProfile.setStyle("-fx-margin: 0 20 0 0;");
     }
 
@@ -391,7 +413,6 @@ public class ChatBotController implements Initializable {
         bot = new Bot("super", resourcesPath);
         chatSession = new Chat(bot);
         chatSession.customerId = "  guest";
-        bot.writeAIMLFiles();
         bot.brain.nodeStats();
         initFAQButtons();
         chatInit();

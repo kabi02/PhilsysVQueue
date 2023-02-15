@@ -63,10 +63,10 @@ public class UserLoginController implements Initializable {
                     if (rs.getString("userEmail").equals(userEmail)) {
                         if (rs.getString("userPass").equals(userPass)) {
                             dialog.setContentText("Login Succesful!");
-                            dialog.showAndWait();
-                            Main.setRoot("userdashboard", "User Dashboard");
-                            Main.centerRoot();
-                            Main.showStage();
+                            dialog.show();
+                            User.setRoot("userdashboard", "User Dashboard");
+                            User.centerRoot();
+                            User.showStage();
                         } else {
                             dialog.setContentText("Incorrect Username or password.");
                             dialog.showAndWait();

@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
-import com.grp_one.Main;
+import com.grp_one.User;
 import com.grp_one.ChatBot;
 
 import javafx.application.Application;
@@ -66,9 +66,9 @@ public class UserDashboardController implements Initializable {
     void backToUserLogin(ActionEvent event) throws Exception {
         int confirm = JOptionPane.showConfirmDialog(null, "Do you really want to logout?");
         if (confirm == 0) {
-            Main.setRoot("userlogin", "User Login");
-            Main.centerRoot();
-            Main.showStage();
+            User.setRoot("userlogin", "User Login");
+            User.centerRoot();
+            User.showStage();
         }
     }
 

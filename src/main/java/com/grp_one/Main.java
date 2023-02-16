@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
+@Deprecated
 public class Main extends Application {
     private static Stage stage;
 

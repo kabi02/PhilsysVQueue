@@ -21,6 +21,8 @@ import javafx.scene.control.Hyperlink;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import com.grp_one.*;
+
 public class UserDashboardController implements Initializable {
 
     private boolean botInit = false;
@@ -73,10 +75,10 @@ public class UserDashboardController implements Initializable {
     }
 
     @FXML
-    void openRegForm(ActionEvent event) throws Exception{
-        Main.setRoot("userinfo", "Registration Form");
-        Main.centerRoot();
-        Main.showStage();
+    void openRegForm(ActionEvent event) throws Exception {
+        User.setRoot("userinfo", "Registration Form");
+        User.centerRoot();
+        User.showStage();
     }
 
     @Override

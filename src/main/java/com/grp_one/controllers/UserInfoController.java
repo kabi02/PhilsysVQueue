@@ -22,12 +22,15 @@ import com.grp_one.*;
 import java.sql.*;
 
 public class UserInfoController {
-    ObservableList<String> maritalStatusList = FXCollections.observableArrayList("Single", "Married", "Widowed", "Divorced", "Legally Separated", "Annulled", "Nullified");
-    ObservableList<String> bloodTypeList = FXCollections.observableArrayList("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-", "Unknown");
+    ObservableList<String> maritalStatusList = FXCollections.observableArrayList("Single", "Married", "Widowed",
+            "Divorced", "Legally Separated", "Annulled", "Nullified");
+    ObservableList<String> bloodTypeList = FXCollections.observableArrayList("A+", "A-", "B+", "B-", "AB+", "AB-", "O+",
+            "O-", "Unknown");
     @FXML
     private ChoiceBox<String> bloodTypeBox;
 
-    @FXML private ChoiceBox<String> maritalStatusBox;
+    @FXML
+    private ChoiceBox<String> maritalStatusBox;
 
     @FXML
     private void initialize() {
@@ -100,22 +103,22 @@ public class UserInfoController {
     @FXML
     private TextField regInfoEmail;
 
-    @FXML 
+    @FXML
     private TextField regInfoContact;
 
     @FXML
     private Button btnFormNext;
 
     @FXML
-    void goToUploadPic(ActionEvent event) throws Exception{
-        
+    void goToUploadPic(ActionEvent event) throws Exception {
+
     }
 
     @FXML
-    void backToDashboard(ActionEvent event) throws Exception{
-        Main.setRoot("userdashboard", "User Dashboard");
-        Main.centerRoot();
-        Main.showStage();
+    void backToDashboard(ActionEvent event) throws Exception {
+        User.setRoot("userdashboard", "User Dashboard");
+        User.centerRoot();
+        User.showStage();
     }
 
 }

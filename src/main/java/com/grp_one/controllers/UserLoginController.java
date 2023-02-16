@@ -37,9 +37,9 @@ public class UserLoginController implements Initializable {
 
     @FXML
     private void userSignup(ActionEvent event) throws Exception {
-        Main.setRoot("userSignup", "Sign Up");
-        Main.centerRoot();
-        Main.showStage();
+        User.setRoot("userSignup", "Sign Up");
+        User.centerRoot();
+        User.showStage();
     }
 
     @FXML

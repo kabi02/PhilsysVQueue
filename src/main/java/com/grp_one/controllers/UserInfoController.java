@@ -18,6 +18,9 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
+import com.grp_one.*;
+import java.sql.*;
+
 public class UserInfoController {
     ObservableList<String> maritalStatusList = FXCollections.observableArrayList("Single", "Married", "Widowed", "Divorced", "Legally Separated", "Annulled", "Nullified");
     ObservableList<String> bloodTypeList = FXCollections.observableArrayList("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-", "Unknown");
@@ -102,6 +105,11 @@ public class UserInfoController {
 
     @FXML
     private Button btnFormNext;
+
+    @FXML
+    void goToUploadPic(ActionEvent event) throws Exception{
+        
+    }
 
     @FXML
     void backToDashboard(ActionEvent event) throws Exception{

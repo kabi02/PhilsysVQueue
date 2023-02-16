@@ -15,17 +15,14 @@
 <!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
 <!--  -->
 <!-- For more information see http://www.alicebot.org -->
-<category><pattern>APPLY</pattern>
-<template><srai>APPLICATION</srai></template>
-</category>
 <category><pattern>APPLY _</pattern>
-<template><srai>APPLICATION</srai></template>
+<template><srai>APPLY</srai></template>
 </category>
 <category><pattern>_ APPLY</pattern>
-<template><srai>APPLICATION</srai></template>
+<template><srai>APPLY</srai></template>
 </category>
 <category><pattern>_ APPLY *</pattern>
-<template><srai>APPLICATION</srai></template>
+<template><srai>APPLY</srai></template>
 </category>
 <category><pattern>APPLICATION _</pattern>
 <template><srai>APPLICATION</srai></template>

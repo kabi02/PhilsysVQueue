@@ -1,2 +1,2 @@
 name:User
-status:claiming
+stats:claiming

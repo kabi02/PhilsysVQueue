@@ -16,9 +16,9 @@
 <!--  -->
 <!-- For more information see http://www.alicebot.org -->
 <category><pattern>BOTINTRODUCTIONID1000</pattern>
-<template>Hello! I am Philcee. Nice to meet you<think><set name="status"><map name="userInfo">status</map></set></think></template>
+<template>Hello! I am Philcee. Nice to meet you<think><set name="status"><map name="userInfo">stats</map></set></think></template>
 </category>
 <category><pattern>STATUS</pattern>
-<template>To check your application status, Press "Check Application Status" at your dashboard.</template>
+<template>To check your application status, you may click "Check Application Status" in your dashboard.</template>
 </category>
 </aiml>

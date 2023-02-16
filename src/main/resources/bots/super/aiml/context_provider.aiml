@@ -21,8 +21,11 @@
 <category><pattern>HELP</pattern>
 <template>HELP<think><set name="topic">help</set></think></template>
 </category>
-<category><pattern>APPLICATION</pattern>
+<category><pattern>APPLY</pattern>
 <template>APPLY<think><set name="topic">apply</set></think></template>
+</category>
+<category><pattern>APPLICATION</pattern>
+<template><srai>STATUS</srai></template>
 </category>
 <category><pattern>BIOMETRICS</pattern>
 <template>BIO BEGIN<think><set name="topic">biometrics</set></think></template>

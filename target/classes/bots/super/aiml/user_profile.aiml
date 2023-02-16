@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aiml>
-<!-- File: update.aiml -->
+<!-- File: standard_convo.aiml -->
 <!-- Author: Dr. Richard S. Wallace -->
-<!-- Last modified: February 15, 2023 -->
+<!-- Last modified: February 11, 2023 -->
 <!--  -->
 <!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
 <!--  -->
@@ -15,10 +15,5 @@
 <!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
 <!--  -->
 <!-- For more information see http://www.alicebot.org -->
-<category><pattern>BUILD</pattern>
-<template>Wed Feb 15 20:28:39 PST 2023</template>
-</category>
-<category><pattern>DELEVLOPMENT ENVIRONMENT</pattern>
-<template>Program AB 0.0.4.2 beta -- AI Foundation Reference AIML 2.0 implementation</template>
-</category>
+
 </aiml>

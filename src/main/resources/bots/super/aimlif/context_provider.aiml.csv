@@ -1,0 +1,3 @@
+0,<SET>PROFANITY</SET>,*,*,PROFANITY,context_provider.aiml
+0,HELP,*,*,HELP<think><set name="topic">help</set></think>,context_provider.aiml
+0,ID APPLICATION,*,*,APPLY<think><set name="topic">apply</set></think>,context_provider.aiml

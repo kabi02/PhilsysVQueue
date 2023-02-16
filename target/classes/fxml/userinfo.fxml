@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp_one.controllers.UserInfoController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Information">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="51.0" text="Name" />
+      <TextField fx:id="txtFieldLN" layoutX="54.0" layoutY="47.0" promptText="Last name..." />
+      <TextField fx:id="txtFieldFN" layoutX="213.0" layoutY="47.0" promptText="First name..." />
+      <TextField fx:id="txtFieldMN" layoutX="372.0" layoutY="47.0" promptText="Middle name..." />
+      <Label layoutX="94.0" layoutY="72.0" text="Last Name" />
+      <Label layoutX="259.0" layoutY="72.0" text="First Name" />
+      <Label layoutX="411.0" layoutY="72.0" text="Middle Name" />
+      <Label layoutX="14.0" layoutY="105.0" text="Sex" />
+      <RadioButton fx:id="btnMale" layoutX="54.0" layoutY="105.0" mnemonicParsing="false" text="Male">
+         <toggleGroup>
+            <ToggleGroup fx:id="genderSel" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="btnFemale" layoutX="110.0" layoutY="105.0" mnemonicParsing="false" text="Female" toggleGroup="$genderSel" />
+      <Label layoutX="213.0" layoutY="105.0" text="Date of Birth" />
+      <DatePicker fx:id="dateBirth" layoutX="285.0" layoutY="101.0" promptText="Select date..." />
+      <Label layoutX="11.0" layoutY="161.0" text="Place of Birth" />
+      <TextField fx:id="txtFieldCity" layoutX="90.0" layoutY="157.0" promptText="City..." />
+      <TextField fx:id="txtFieldProv" layoutX="249.0" layoutY="157.0" promptText="Province..." />
+      <TextField fx:id="txtFieldCountry" layoutX="407.0" layoutY="157.0" promptText="Country..." />
+      <Label layoutX="154.0" layoutY="182.0" text="City" />
+      <Label layoutX="301.0" layoutY="182.0" text="Province" />
+      <Label layoutX="462.0" layoutY="182.0" text="Country" />
+      <Label layoutX="10.0" layoutY="212.0" text="Blood Type" />
+      <ChoiceBox fx:id="bloodTypeBox" layoutX="90.0" layoutY="208.0" prefWidth="150.0" />
+      <Label layoutX="273.0" layoutY="214.0" text="Filipino or Resident Alien" />
+      <Label layoutX="10.0" layoutY="262.0" text="Marital Status" />
+      <ChoiceBox fx:id="maritalStatusBox" layoutX="90.0" layoutY="258.0" prefWidth="150.0" />
+      <Hyperlink fx:id="dashboardLink" layoutX="656.0" layoutY="17.0" onAction="#backToDashboard" text="Back to Dashboard" />
+      <Label layoutX="10.0" layoutY="307.0" text="Permanent Address" />
+      <TextField fx:id="addressRFU" layoutX="129.0" layoutY="303.0" promptText="Rm/Flr/Unit..." />
+      <TextField fx:id="addressHLB" layoutX="288.0" layoutY="303.0" promptText="House/Lot/Blk..." />
+      <TextField fx:id="addressStreet" layoutX="447.0" layoutY="303.0" promptText="Street..." />
+      <TextField fx:id="addressSub" layoutX="605.0" layoutY="303.0" promptText="Subdivision..." />
+      <TextField fx:id="addressCity" layoutX="129.0" layoutY="353.0" promptText="City..." />
+      <TextField fx:id="addressProv" layoutX="288.0" layoutY="353.0" promptText="Province..." />
+      <TextField fx:id="addressCountry" layoutX="447.0" layoutY="353.0" promptText="Country..." />
+      <Label layoutX="159.0" layoutY="328.0" text="Room/Floor/Unit" />
+      <Label layoutX="318.0" layoutY="328.0" text="House/Lot/Block" />
+      <Label layoutX="506.0" layoutY="328.0" text="Street" />
+      <Label layoutX="649.0" layoutY="328.0" text="Subdivision" />
+      <Label layoutX="194.0" layoutY="378.0" text="City" />
+      <Label layoutX="339.0" layoutY="378.0" text="Province" />
+      <Label layoutX="500.0" layoutY="378.0" text="Country" />
+      <RadioButton fx:id="btnFil" layoutX="417.0" layoutY="214.0" mnemonicParsing="false" text="Filipino">
+         <toggleGroup>
+            <ToggleGroup fx:id="filOrAlien" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="btnAlien" layoutX="483.0" layoutY="214.0" mnemonicParsing="false" text="Resident Alien" toggleGroup="$filOrAlien" />
+      <Label layoutX="10.0" layoutY="413.0" text="Email" />
+      <Label layoutX="9.0" layoutY="459.0" text="Contact" />
+      <TextField fx:id="regInfoEmail" layoutX="55.0" layoutY="409.0" promptText="Email..." />
+      <TextField fx:id="regInfoContact" layoutX="55.0" layoutY="455.0" promptText="Contact no..." />
+      <Button fx:id="btnFormNext" layoutX="700.0" layoutY="473.0" mnemonicParsing="false" text="Next" />
+   </children>
+</AnchorPane>

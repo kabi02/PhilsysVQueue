@@ -72,6 +72,13 @@ public class UserDashboardController implements Initializable {
         }
     }
 
+    @FXML
+    void openRegForm(ActionEvent event) throws Exception{
+        Main.setRoot("userinfo", "Registration Form");
+        Main.centerRoot();
+        Main.showStage();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 

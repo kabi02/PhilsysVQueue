@@ -1,2 +1,2 @@
 name:User
-stats:claiming
+stats:declined

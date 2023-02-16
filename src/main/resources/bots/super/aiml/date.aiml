@@ -2,7 +2,11 @@
 <aiml>
 <!-- File: date.aiml -->
 <!-- Author: Dr. Richard S. Wallace -->
+<<<<<<< HEAD
 <!-- Last modified: February 15, 2023 -->
+=======
+<!-- Last modified: February 13, 2023 -->
+>>>>>>> df95365a73f62eef29b2e50edd54def2cae6e8fd
 <!--  -->
 <!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
 <!--  -->

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 0,APPLY _,*,*,<srai>APPLY</srai>,reductions.aiml
 0,_ APPLY,*,*,<srai>APPLY</srai>,reductions.aiml
 0,_ APPLY *,*,*,<srai>APPLY</srai>,reductions.aiml
@@ -14,12 +15,19 @@
 0,_ CLAIMING,*,*,<srai>CLAIM</srai>,reductions.aiml
 0,CLAIMING _,*,*,<srai>CLAIM</srai>,reductions.aiml
 0,_ CLAIMING *,*,*,<srai>CLAIM</srai>,reductions.aiml
+=======
+0,APPLY,*,*,<srai>ID APPLICATION</srai>,reductions.aiml
+0,APPLY _,*,*,<srai>ID APPLICATION</srai>,reductions.aiml
+0,_ APPLY,*,*,<srai>ID APPLICATION</srai>,reductions.aiml
+0,_ APPLY *,*,*,<srai>ID APPLICATION</srai>,reductions.aiml
+>>>>>>> df95365a73f62eef29b2e50edd54def2cae6e8fd
 0,HELP _,*,*,<srai>HELP</srai>,reductions.aiml
 0,_ HELP,*,*,<srai>HELP</srai>,reductions.aiml
 0,_ HELP *,*,*,<srai>HELP</srai>,reductions.aiml
 0,<SET>PROFANITY</SET> _,*,*,PROFANITY,reductions.aiml
 0,_ <SET>PROFANITY</SET>,*,*,PROFANITY,reductions.aiml
 0,_ <SET>PROFANITY</SET> *,*,*,PROFANITY,reductions.aiml
+<<<<<<< HEAD
 0,_ STATUS,*,*,<srai>STATUS</srai>,reductions.aiml
 0,STATUS _,*,*,<srai>STATUS</srai>,reductions.aiml
 0,_ STATUS *,*,*,<srai>STATUS</srai>,reductions.aiml
@@ -30,3 +38,5 @@
 0,_ DOCUMENT,*,*,<srai>DOCUMENTS</srai>,reductions.aiml
 0,DOCUMENT _,*,*,<srai>DOCUMENTS</srai>,reductions.aiml
 0,_ DOCUMENT *,*,*,<srai>DOCUMENTS</srai>,reductions.aiml
+=======
+>>>>>>> df95365a73f62eef29b2e50edd54def2cae6e8fd

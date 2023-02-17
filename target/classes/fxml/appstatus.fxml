@@ -17,7 +17,6 @@
             <Font name="System Bold" size="29.0" />
          </font>
       </Label>
-      <Hyperlink fx:id="linkStatusGoBack" layoutX="315.0" layoutY="23.0" text="Go back" />
-      <Hyperlink fx:id="linkStatusDocStat" layoutX="232.0" layoutY="289.0" text="Check Document Status" />
+      <Hyperlink fx:id="linkStatusGoBack" layoutX="315.0" layoutY="23.0" onAction="#backToDashboard" text="Go back" />
    </children>
 </AnchorPane>

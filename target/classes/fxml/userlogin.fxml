@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="236.0" prefWidth="351.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp_one.controllers.UserLoginController">
+   <children>
+      <Label layoutX="103.0" layoutY="26.0" text="Welcome, User">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="54.0" layoutY="90.0" text="Email" />
+      <TextField fx:id="emailFieldUser" layoutX="117.0" layoutY="86.0" prefHeight="25.0" prefWidth="176.0" promptText="Enter email" />
+      <Label layoutX="54.0" layoutY="127.0" text="Password" />
+      <PasswordField fx:id="passFieldUser" layoutX="117.0" layoutY="123.0" prefHeight="25.0" prefWidth="176.0" promptText="Enter password" />
+      <Button fx:id="loginBtn" layoutX="153.0" layoutY="165.0" mnemonicParsing="false" onAction="#goToUserDashboard" text="Login" />
+      <Hyperlink fx:id="signupLink" layoutX="78.0" layoutY="199.0" onAction="#userSignup" text="Don't have an account yet? Sign up" />
+   </children>
+</AnchorPane>

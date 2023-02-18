@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!-- File: reductions.aiml -->
+<!-- Author: Dr. Richard S. Wallace -->
+<<<<<<< HEAD
+<!-- Last modified: February 15, 2023 -->
+=======
+<!-- Last modified: February 17, 2023 -->
+>>>>>>> 272f714c0789b25518d900244ca1d8f04c3fc046
+<!--  -->
+<!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
+<!--  -->
+<!-- The SUPER brain is Copyright &copy; 2023 by ALICE AI Foundation. -->
+<!--  -->
+<!-- The SUPER brain is released under the terms of the GNU Lesser General -->
+<!-- Public License, as published by the Free Software Foundation. -->
+<!--  -->
+<!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
+<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
+<!--  -->
+<!-- For more information see http://www.alicebot.org -->
+<category><pattern>APPLY _</pattern>
+<template><srai>APPLY</srai></template>
+</category>
+<category><pattern>_ APPLY</pattern>
+<template><srai>APPLY</srai></template>
+</category>
+<category><pattern>_ APPLY *</pattern>
+<template><srai>APPLY</srai></template>
+</category>
+<category><pattern>APPLICATION _</pattern>
+<template><srai>APPLICATION</srai></template>
+</category>
+<category><pattern>_ APPLICATION</pattern>
+<template><srai>APPLICATION</srai></template>
+</category>
+<category><pattern>_ APPLICATION *</pattern>
+<template><srai>APPLICATION</srai></template>
+</category>
+<category><pattern>_ BIOMETRICS</pattern>
+<template><srai>BIOMETRICS</srai></template>
+</category>
+<category><pattern>BIOMETRICS _</pattern>
+<template><srai>BIOMETRICS</srai></template>
+</category>
+<category><pattern>_ BIOMETRICS *</pattern>
+<template><srai>BIOMETRICS</srai></template>
+</category>
+<category><pattern>_ CLAIM</pattern>
+<template><srai>CLAIM</srai></template>
+</category>
+<category><pattern>CLAIM _</pattern>
+<template><srai>CLAIM</srai></template>
+</category>
+<category><pattern>_ CLAIM *</pattern>
+<template><srai>CLAIM</srai></template>
+</category>
+<category><pattern>CLAIMING</pattern>
+<template><srai>CLAIM</srai></template>
+</category>
+<category><pattern>_ CLAIMING</pattern>
+<template><srai>CLAIM</srai></template>
+</category>
+<category><pattern>CLAIMING _</pattern>
+<template><srai>CLAIM</srai></template>
+</category>
+<category><pattern>_ CLAIMING *</pattern>
+<template><srai>CLAIM</srai></template>
+</category>
+<category><pattern>HELP _</pattern>
+<template><srai>HELP</srai></template>
+</category>
+<category><pattern>_ HELP</pattern>
+<template><srai>HELP</srai></template>
+</category>
+<category><pattern>_ HELP *</pattern>
+<template><srai>HELP</srai></template>
+</category>
+<category><pattern><SET>PROFANITY</SET> _</pattern>
+<template>PROFANITY</template>
+</category>
+<category><pattern>_ <SET>PROFANITY</SET></pattern>
+<template>PROFANITY</template>
+</category>
+<category><pattern>_ <SET>PROFANITY</SET> *</pattern>
+<template>PROFANITY</template>
+</category>
+<category><pattern>_ STATUS</pattern>
+<template><srai>STATUS</srai></template>
+</category>
+<category><pattern>STATUS _</pattern>
+<template><srai>STATUS</srai></template>
+</category>
+<category><pattern>_ STATUS *</pattern>
+<template><srai>STATUS</srai></template>
+</category>
+<category><pattern>_ DOCUMENTS</pattern>
+<template><srai>DOCUMENTS</srai></template>
+</category>
+<category><pattern>DOCUMENTS _</pattern>
+<template><srai>DOCUMENTS</srai></template>
+</category>
+<category><pattern>_ DOCUMENTS *</pattern>
+<template><srai>DOCUMENTS</srai></template>
+</category>
+<category><pattern>DOCUMENT</pattern>
+<template><srai>DOCUMENTS</srai></template>
+</category>
+<category><pattern>_ DOCUMENT</pattern>
+<template><srai>DOCUMENTS</srai></template>
+</category>
+<category><pattern>DOCUMENT _</pattern>
+<template><srai>DOCUMENTS</srai></template>
+</category>
+<category><pattern>_ DOCUMENT *</pattern>
+<template><srai>DOCUMENTS</srai></template>
+</category>
+</aiml>

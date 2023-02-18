@@ -1,1 +1,2 @@
-name:Kenshin
+name:User
+stats:declined

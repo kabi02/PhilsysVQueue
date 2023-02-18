@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!-- File: standard_convo.aiml -->
+<!-- Author: Dr. Richard S. Wallace -->
+<<<<<<< HEAD
+<!-- Last modified: February 15, 2023 -->
+=======
+<!-- Last modified: February 17, 2023 -->
+>>>>>>> 272f714c0789b25518d900244ca1d8f04c3fc046
+<!--  -->
+<!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
+<!--  -->
+<!-- The SUPER brain is Copyright &copy; 2023 by ALICE AI Foundation. -->
+<!--  -->
+<!-- The SUPER brain is released under the terms of the GNU Lesser General -->
+<!-- Public License, as published by the Free Software Foundation. -->
+<!--  -->
+<!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
+<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
+<!--  -->
+<!-- For more information see http://www.alicebot.org -->
+<category><pattern>BOTINTRODUCTIONID1000</pattern>
+<template>Hello! I am Philcee. Nice to meet you<think><set name="status"><map name="userInfo">stats</map></set></think></template>
+</category>
+<category><pattern>STATUS</pattern>
+<template>To check your application status, you may click "Check Application Status" in your dashboard.</template>
+</category>
+</aiml>

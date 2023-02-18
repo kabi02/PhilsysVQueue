@@ -1,0 +1,32 @@
+0,APPLY _,*,*,<srai>APPLY</srai>,reductions.aiml
+0,_ APPLY,*,*,<srai>APPLY</srai>,reductions.aiml
+0,_ APPLY *,*,*,<srai>APPLY</srai>,reductions.aiml
+0,APPLICATION _,*,*,<srai>APPLICATION</srai>,reductions.aiml
+0,_ APPLICATION,*,*,<srai>APPLICATION</srai>,reductions.aiml
+0,_ APPLICATION *,*,*,<srai>APPLICATION</srai>,reductions.aiml
+0,_ BIOMETRICS,*,*,<srai>BIOMETRICS</srai>,reductions.aiml
+0,BIOMETRICS _,*,*,<srai>BIOMETRICS</srai>,reductions.aiml
+0,_ BIOMETRICS *,*,*,<srai>BIOMETRICS</srai>,reductions.aiml
+0,_ CLAIM,*,*,<srai>CLAIM</srai>,reductions.aiml
+0,CLAIM _,*,*,<srai>CLAIM</srai>,reductions.aiml
+0,_ CLAIM *,*,*,<srai>CLAIM</srai>,reductions.aiml
+0,CLAIMING,*,*,<srai>CLAIM</srai>,reductions.aiml
+0,_ CLAIMING,*,*,<srai>CLAIM</srai>,reductions.aiml
+0,CLAIMING _,*,*,<srai>CLAIM</srai>,reductions.aiml
+0,_ CLAIMING *,*,*,<srai>CLAIM</srai>,reductions.aiml
+0,HELP _,*,*,<srai>HELP</srai>,reductions.aiml
+0,_ HELP,*,*,<srai>HELP</srai>,reductions.aiml
+0,_ HELP *,*,*,<srai>HELP</srai>,reductions.aiml
+0,<SET>PROFANITY</SET> _,*,*,PROFANITY,reductions.aiml
+0,_ <SET>PROFANITY</SET>,*,*,PROFANITY,reductions.aiml
+0,_ <SET>PROFANITY</SET> *,*,*,PROFANITY,reductions.aiml
+0,_ STATUS,*,*,<srai>STATUS</srai>,reductions.aiml
+0,STATUS _,*,*,<srai>STATUS</srai>,reductions.aiml
+0,_ STATUS *,*,*,<srai>STATUS</srai>,reductions.aiml
+0,_ DOCUMENTS,*,*,<srai>DOCUMENTS</srai>,reductions.aiml
+0,DOCUMENTS _,*,*,<srai>DOCUMENTS</srai>,reductions.aiml
+0,_ DOCUMENTS *,*,*,<srai>DOCUMENTS</srai>,reductions.aiml
+0,DOCUMENT,*,*,<srai>DOCUMENTS</srai>,reductions.aiml
+0,_ DOCUMENT,*,*,<srai>DOCUMENTS</srai>,reductions.aiml
+0,DOCUMENT _,*,*,<srai>DOCUMENTS</srai>,reductions.aiml
+0,_ DOCUMENT *,*,*,<srai>DOCUMENTS</srai>,reductions.aiml

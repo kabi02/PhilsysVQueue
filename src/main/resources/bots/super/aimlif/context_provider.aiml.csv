@@ -1,0 +1,7 @@
+0,<SET>PROFANITY</SET>,*,*,PROFANITY,context_provider.aiml
+0,HELP,*,*,HELP<think><set name="topic">help</set></think>,context_provider.aiml
+0,APPLY,*,*,APPLY<think><set name="topic">apply</set></think>,context_provider.aiml
+0,APPLICATION,*,*,<srai>STATUS</srai>,context_provider.aiml
+0,BIOMETRICS,*,*,BIO BEGIN<think><set name="topic">biometrics</set></think>,context_provider.aiml
+0,CLAIM,*,*,GET ID<think><set name="topic">claim</set></think>,context_provider.aiml
+0,DOCUMENTS,*,*,DOCUMENT<think><set name="topic">documents</set></think>,context_provider.aiml

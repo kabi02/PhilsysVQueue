@@ -1,0 +1,4 @@
+0,CONTEXTHELPID1002,HELP,*,<think><set name="help_begin">Where do you need help?#NewlineYou can ask me any questions about:</set><set name="help_conclude">Hope I can help you!</set></think>,context_help.aiml
+0,CONTEXTHELPID1003,*,HELP,<get name="help_begin"/>,context_help.aiml
+0,CONTEXTHELPID1004,*,HELP,1. Application#Newline2. Application Status#Newline3. National ID#Newline4. Biometrics,context_help.aiml
+0,CONTEXTHELPID1005,*,HELP,<get name="help_conclude"/>,context_help.aiml

@@ -1,0 +1,3 @@
+0,CONTEXTCLAIMID1013,GET ID,CLAIM,To claim your national ID#Comma you must wait for it to be delivered right at your home!,context_claiming.aiml
+0,CONTEXTCLAIMID1014,*,CLAIM,Make sure that your application and biometrics are already processed,context_claiming.aiml
+0,CONTEXTCLAIMID1015,*,CLAIM,For more information please click "How to Apply,context_claiming.aiml

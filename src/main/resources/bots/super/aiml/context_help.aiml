@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!-- File: context_help.aiml -->
+<!-- Author: Dr. Richard S. Wallace -->
+<<<<<<< HEAD
+<<<<<<< HEAD
+<!-- Last modified: February 15, 2023 -->
+=======
+<!-- Last modified: February 13, 2023 -->
+>>>>>>> df95365a73f62eef29b2e50edd54def2cae6e8fd
+=======
+<!-- Last modified: February 17, 2023 -->
+>>>>>>> 272f714c0789b25518d900244ca1d8f04c3fc046
+<!--  -->
+<!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
+<!--  -->
+<!-- The SUPER brain is Copyright &copy; 2023 by ALICE AI Foundation. -->
+<!--  -->
+<!-- The SUPER brain is released under the terms of the GNU Lesser General -->
+<!-- Public License, as published by the Free Software Foundation. -->
+<!--  -->
+<!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
+<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
+<!--  -->
+<!-- For more information see http://www.alicebot.org -->
+<category><pattern>CONTEXTHELPID1002</pattern><that>HELP</that>
+<template><think><set name="help_begin">Where do you need help?
+You can ask me any questions about:</set><set name="help_conclude">Hope I can help you!</set></think></template>
+</category>
+<topic name="HELP">
+<category><pattern>CONTEXTHELPID1003</pattern>
+<template><get name="help_begin"/></template>
+</category></topic>
+
+<topic name="HELP">
+<category><pattern>CONTEXTHELPID1004</pattern>
+<template>1. Application
+2. Application Status
+3. National ID
+4. Biometrics</template>
+</category></topic>
+
+<topic name="HELP">
+<category><pattern>CONTEXTHELPID1005</pattern>
+<template><get name="help_conclude"/></template>
+</category></topic>
+
+</aiml>

@@ -1,0 +1,77 @@
+/*
+# 		- SINGLE LINE
+## 		- MULTI LINE
+###		- MULTI RESPONSE
+>		- REPONSE
+<		- PRESET/INTERCEPT
+-tag-		- TAG
+-tag:VAR-	- TAG:VARIABLE
+-x		- USED IN CONDITION
+*/
+----------------INTRO----------------
+Hello -map:USER-, How may I help you
+
+----------------PRESETS----------------
+<APPLICATION
+###
+.
+.Make sure your documents match your input credentials!
+
+----------------TEMPLATE----------------
+
+>Hello
+#
+Hello -map:userinfo-	
+How may I help you?
+-that-
+	Hello -map:userinfo-, How may I help you
+	#
+	Hi! if you have any inquries
+	try asking me or selecting
+	above the chatbox's FAQ.
+
+>Where can i use -set:nat-id-
+##
+You may refer to this link:
+https://www.philsys.gov.ph/faq/
+
+>How _ -set:nat-id-
+#
+-set:map:PROCESS-
+-condition:QUEUE
+-APPLICATION
+	-condition:PROCESS
+		-li:DECLINED
+		##
+		To reapply, you may want to
+		-srai:APPLICATION--
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

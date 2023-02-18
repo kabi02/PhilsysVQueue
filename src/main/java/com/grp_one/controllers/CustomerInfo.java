@@ -10,6 +10,13 @@ import javafx.scene.control.Button;
 
 public class CustomerInfo {
 
+    public static final String PROCESS = "PROCESS";
+    public static final String NONE = "NONE";
+    public static final String CLAIMING = "CLAIMING";
+    public static final String CLAIMED = "CLAIMED";
+    public static final String DECLINED = "DECLINED";
+    public static final String BIOMETRICS = "BIOMETRICS";
+
     public String getName() {
         return userName.get();
     }

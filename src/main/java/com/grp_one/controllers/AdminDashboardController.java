@@ -84,16 +84,16 @@ public class AdminDashboardController implements Initializable {
     }
 
     private void finishedTable() {
-        System.out.println("HELLO WORLD");
         ObservableList<CustomerInfo> data = FXCollections.observableArrayList();
         dashboardTable.setItems(null);
         try {
             Connection conn = dbConn.dbConn();
-            Statement stmt = null;
+            PreparedStatement stmt = null;
             ResultSet rs = null;
-            String sql = "SELECT `name`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = \"Claimed\"";
+            String sql = "SELECT `name`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = ?";
             stmt = conn.prepareStatement(sql);
-            rs = stmt.executeQuery(sql);
+            stmt.setString(1, CustomerInfo.CLAIMED);
+            rs = stmt.executeQuery();
             while (rs.next()) {
                 System.out.println("HELLO WORLD");
                 data.add(new CustomerInfo(
@@ -108,16 +108,16 @@ public class AdminDashboardController implements Initializable {
     }
 
     private void claimingTable() {
-        System.out.println("HELLO WORLD");
         ObservableList<CustomerInfo> data = FXCollections.observableArrayList();
         dashboardTable.setItems(null);
         try {
             Connection conn = dbConn.dbConn();
-            Statement stmt = null;
+            PreparedStatement stmt = null;
             ResultSet rs = null;
-            String sql = "SELECT `name`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = \"Claiming\"";
+            String sql = "SELECT `name`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = ?";
             stmt = conn.prepareStatement(sql);
-            rs = stmt.executeQuery(sql);
+            stmt.setString(1, CustomerInfo.CLAIMING);
+            rs = stmt.executeQuery();
             while (rs.next()) {
                 System.out.println("HELLO WORLD");
                 data.add(new CustomerInfo(
@@ -132,16 +132,16 @@ public class AdminDashboardController implements Initializable {
     }
 
     private void biometricsTable() {
-        System.out.println("HELLO WORLD");
         ObservableList<CustomerInfo> data = FXCollections.observableArrayList();
         dashboardTable.setItems(null);
         try {
             Connection conn = dbConn.dbConn();
-            Statement stmt = null;
+            PreparedStatement stmt = null;
             ResultSet rs = null;
-            String sql = "SELECT `name`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = \"Biometrics\"";
+            String sql = "SELECT `name`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = ?";
             stmt = conn.prepareStatement(sql);
-            rs = stmt.executeQuery(sql);
+            stmt.setString(1, CustomerInfo.BIOMETRICS);
+            rs = stmt.executeQuery();
             while (rs.next()) {
                 System.out.println("HELLO WORLD");
                 data.add(new CustomerInfo(
@@ -156,18 +156,19 @@ public class AdminDashboardController implements Initializable {
     }
 
     private void requestsTable() {
-        System.out.println("HELLO WORLD");
         ObservableList<CustomerInfo> data = FXCollections.observableArrayList();
         dashboardTable.setItems(null);
+        System.out.println(CustomerInfo.PROCESS);
         try {
             Connection conn = dbConn.dbConn();
-            Statement stmt = null;
+            PreparedStatement stmt = null;
             ResultSet rs = null;
-            String sql = "SELECT `name`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = \"Process\"";
+            String sql = "SELECT `name`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = ?";
             stmt = conn.prepareStatement(sql);
-            rs = stmt.executeQuery(sql);
+            stmt.setString(1, CustomerInfo.PROCESS);
+            rs = stmt.executeQuery();
             while (rs.next()) {
-                System.out.println("HELLO WORLD");
+                System.out.println(CustomerInfo.PROCESS);
                 data.add(new CustomerInfo(
                         rs.getString("name"),
                         rs.getString("CTN"),

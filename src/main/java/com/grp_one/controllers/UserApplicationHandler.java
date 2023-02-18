@@ -46,7 +46,7 @@ public class UserApplicationHandler {
                 PreparedStatement stmt = conn.prepareStatement(applicationData);
                 stmt.setInt(1, sessionUID);
                 stmt.setDate(2, dateOfTransaction);
-                stmt.setString(3, "Process");
+                stmt.setString(3, CustomerInfo.PROCESS);
                 stmt.setString(4,
                         (new StringBuilder(String.valueOf(sessionUID * System.currentTimeMillis())).reverse()
                                 .toString()).substring(0, 9) + String.valueOf(dateOfTransaction));

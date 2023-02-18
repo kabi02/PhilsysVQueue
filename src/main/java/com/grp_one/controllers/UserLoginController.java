@@ -1,5 +1,7 @@
 package com.grp_one.controllers;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -65,6 +67,7 @@ public class UserLoginController implements Initializable {
                             dialog.setContentText("Login Succesful!");
                             dialog.show();
                             UserApplicationHandler.setSessionUID(rs.getInt("userID"));
+                            updateChatUserInfo();
                             User.setRoot("userdashboard", "User Dashboard");
                             User.centerRoot();
                             User.showStage();
@@ -83,6 +86,32 @@ public class UserLoginController implements Initializable {
         } else {
             dialog.setContentText("Failed to connect.");
             dialog.showAndWait();
+        }
+    }
+
+    private void updateChatUserInfo() {
+        String filePath = User.getResourcesPath() + "/bots/super/maps/userInfo.txt";
+        File deleteFile = new File(filePath);
+        deleteFile.delete();
+        File writeFile = new File(filePath);
+        try {
+            FileWriter userInfo = new FileWriter(writeFile, false);
+            Connection conn = dbConn.dbConn();
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+            String sql = "select admin.application_status.status, admin.user_personal_info.fname from admin.user_personal_info inner join admin.application_status where admin.application_status.userID = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, UserApplicationHandler.getSessionUID());
+            rs = stmt.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                userInfo.write("name:User\nstats:unknown");
+            } else {
+                rs.next();
+                userInfo.write("name:" + rs.getString(2) + "\nstats:" + rs.getString(1).toLowerCase());
+            }
+            userInfo.close();
+        } catch (Exception e) {
+
         }
     }
 

@@ -26,6 +26,10 @@ public class UserApplicationHandler {
         sessionUID = UID;
     }
 
+    public static int getSessionUID() {
+        return sessionUID;
+    }
+
     public static void clearInfo() {
         userInfo = null;
     }
@@ -41,7 +45,7 @@ public class UserApplicationHandler {
             try {
                 Connection conn = dbConn.dbConn();
                 String locationData = "INSERT INTO admin.user_address VALUES(?,?,?,?,?,?,?,?)";
-                String personalData = "INSERT INTO admin.user_personal_info VALUES(?,?,?,?,?,?,?)";
+                String personalData = "INSERT INTO admin.user_personal_info VALUES(?,?,?,?,?,?,?,?,?)";
                 String applicationData = "INSERT INTO admin.application_status VALUES(?,?,?,?)";
                 PreparedStatement stmt = conn.prepareStatement(applicationData);
                 stmt.setInt(1, sessionUID);
@@ -53,13 +57,15 @@ public class UserApplicationHandler {
                 stmt.executeUpdate();
                 stmt = conn.prepareStatement(personalData);
                 stmt.setInt(1, sessionUID);
-                stmt.setString(2, (String) userInfo.get(ChatContextProvider.LNAME));
                 Date date = Date.valueOf((LocalDate) userInfo.get(ChatContextProvider.BDAY));
-                stmt.setDate(3, date);
-                stmt.setString(4, (userInfo.get(ChatContextProvider.SEX)).toString());
-                stmt.setString(5, (String) userInfo.get(ChatContextProvider.BTYPE));
-                stmt.setString(6, (String) userInfo.get(ChatContextProvider.FILoALIEN));
-                stmt.setString(7, (String) userInfo.get(ChatContextProvider.MARITAL));
+                stmt.setDate(2, date);
+                stmt.setString(3, (userInfo.get(ChatContextProvider.SEX)).toString());
+                stmt.setString(4, (String) userInfo.get(ChatContextProvider.BTYPE));
+                stmt.setString(5, (String) userInfo.get(ChatContextProvider.FILoALIEN));
+                stmt.setString(6, (String) userInfo.get(ChatContextProvider.MARITAL));
+                stmt.setString(7, (String) userInfo.get(ChatContextProvider.MNAME));
+                stmt.setString(8, (String) userInfo.get(ChatContextProvider.LNAME));
+                stmt.setString(9, (String) userInfo.get(ChatContextProvider.FNAME));
                 stmt.executeUpdate();
                 stmt = conn.prepareStatement(locationData);
                 stmt.setInt(1, sessionUID);

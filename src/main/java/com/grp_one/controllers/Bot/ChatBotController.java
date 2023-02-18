@@ -211,6 +211,7 @@ public class ChatBotController implements Initializable {
                 return;
             case BIOMETRICS:
                 botMsg = chatSession.multisentenceRespond(ChatContextProvider.BIODISPATCH);
+                chatHeight += 10;
                 displayResponses();
                 return;
             case CLAIM:

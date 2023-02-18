@@ -2,6 +2,9 @@ package com.grp_one.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -17,7 +20,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -26,8 +32,10 @@ import com.grp_one.*;
 public class UserDashboardController implements Initializable {
 
     private boolean botInit = false;
+    SqlConnector dbConn = new SqlConnector();
     private Application chatBotInstance = new ChatBot();
     private Stage chatBotStage = new Stage();
+    Dialog<String> dialog = new Dialog<>();
 
     @FXML
     private Button appstatusbtn;
@@ -90,13 +98,42 @@ public class UserDashboardController implements Initializable {
 
     @FXML
     void openRegForm(ActionEvent event) throws Exception {
-        User.setRoot("userinfo", "Registration Form");
-        User.centerRoot();
-        User.showStage();
+        try {
+            Connection conn = dbConn.dbConn();
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+            String sql = "select admin.application_status.status from admin.application_status where admin.application_status.userID = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, UserApplicationHandler.getSessionUID());
+            rs = stmt.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                User.setRoot("userinfo", "Registration Form");
+                User.centerRoot();
+                User.showStage();
+            } else {
+                rs.next();
+                if (rs.getString(1).equalsIgnoreCase(CustomerInfo.DECLINED)) {
+                    User.setRoot("userinfo", "Registration Form");
+                    User.centerRoot();
+                    User.showStage();
+                } else if (rs.getString(1).equalsIgnoreCase(CustomerInfo.PROCESS)) {
+                    dialog.setContentText("Application being Processed!");
+                    dialog.showAndWait();
+                } else {
+                    dialog.setContentText("Application Processed!");
+                    dialog.showAndWait();
+                }
+            }
+        } catch (Exception e) {
+
+        }
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        dialog.setTitle("Dialog");
+        ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().add(type);
     }
 }

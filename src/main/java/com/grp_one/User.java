@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -49,6 +50,15 @@ public class User extends Application {
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(User.class.getResource("/fxml/" + fxml + ".fxml"));
         return fxmlLoader.load();
+    }
+
+    public static String getResourcesPath() {
+        File currDir = new File(".");
+        String path = currDir.getAbsolutePath();
+        path = path.substring(0, path.length() - 2);
+        // System.out.println(path);
+        String resourcesPath = path + File.separator + "src" + File.separator + "main" + File.separator + "resources";
+        return resourcesPath;
     }
 
     public static void main(String[] args) {

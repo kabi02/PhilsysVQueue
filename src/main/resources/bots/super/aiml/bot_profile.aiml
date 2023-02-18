@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aiml>
-<!-- File: context_claiming.aiml -->
+<!-- File: bot_profile.aiml -->
 <!-- Author: Dr. Richard S. Wallace -->
 <!-- Last modified: February 18, 2023 -->
 <!--  -->
@@ -15,19 +15,7 @@
 <!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
 <!--  -->
 <!-- For more information see http://www.alicebot.org -->
-<topic name="CLAIM">
-<category><pattern>CONTEXTCLAIMID1013</pattern><that>GET ID</that>
-<template>To claim your national ID, you must wait for it to be delivered right at your home!</template>
-</category></topic>
-
-<topic name="CLAIM">
-<category><pattern>CONTEXTCLAIMID1014</pattern>
-<template>Make sure that your application and biometrics are already processed</template>
-</category></topic>
-
-<topic name="CLAIM">
-<category><pattern>CONTEXTCLAIMID1015</pattern>
-<template>For more information please click "How to Apply</template>
-</category></topic>
-
+<category><pattern>LONG</pattern>
+<template>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</template>
+</category>
 </aiml>

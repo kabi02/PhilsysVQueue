@@ -75,19 +75,19 @@ public class UploadImagesController
             }
         });
         linkFinishUpload.setOnAction(event -> {
-            UserApplicationHandler.uploadInfo();
-            try {
-                User.setRoot("appsuccess", "Congratulations!");
-            } catch (IOException e) {
-            }
-            User.centerRoot();
-            User.showStage();
-            // if (imgProfile == null || doc1 == null || doc2 == null) {
-            // dialog.setContentText("Incomplete Information");
-            // dialog.showAndWait();
-            // } else {
 
-            // }
+            if (imgProfile == null || doc1 == null || doc2 == null) {
+                dialog.setContentText("Incomplete Information");
+                dialog.showAndWait();
+            } else {
+                UserApplicationHandler.uploadInfo();
+                try {
+                    User.setRoot("appsuccess", "Congratulations!");
+                } catch (IOException e) {
+                }
+                User.centerRoot();
+                User.showStage();
+            }
         });
 
     }

@@ -1,7 +1,4 @@
 0,NATIONAL ID,*,*,Here is how#NewlineThe process involves,__test_Faq.aiml
-0,NATIONAL ID _,*,*,<srai>NATIONAL ID</srai>,__test_Faq.aiml
-0,_ NATIONAL ID,*,*,<srai>NATIONAL ID</srai>,__test_Faq.aiml
-0,_ NATIONAL ID *,*,*,<srai>NATIONAL ID</srai>,__test_Faq.aiml
 0,<SET>TEST</SET>,*,*,Today is <date format="%B %d#Comma %Y" jformat="MMMMMMMMM dd#Comma YYYY"/>,__test_Faq.aiml
 0,WHAT _ MY NAME,*,*,Your name is <set user="name"><map name="userInfo">name</map></set>,__test_Faq.aiml
 0,WHO IS LOKI,*,*,YOU ARE<set user="user"><map><name>userInfo</name>name</map></set>,__test_Faq.aiml

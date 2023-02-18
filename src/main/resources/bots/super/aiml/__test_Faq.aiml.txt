@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!-- File: __test_Faq.aiml -->
+<!-- Author: Dr. Richard S. Wallace -->
+<!-- Last modified: February 12, 2023 -->
+<!--  -->
+<!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
+<!--  -->
+<!-- The SUPER brain is Copyright &copy; 2023 by ALICE AI Foundation. -->
+<!--  -->
+<!-- The SUPER brain is released under the terms of the GNU Lesser General -->
+<!-- Public License, as published by the Free Software Foundation. -->
+<!--  -->
+<!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
+<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
+<!--  -->
+<!-- For more information see http://www.alicebot.org -->
+<category><pattern><SET>TEST</SET></pattern>
+<template>Today is <date format="%B %d, %Y" jformat="MMMMMMMMM dd, YYYY"/></template>
+</category>
+<category><pattern>WHAT _ MY NAME</pattern>
+<template>Your name is <set user="name"><map name="userInfo">name</map></set></template>
+</category>
+<category><pattern>WHO IS LOKI</pattern>
+<template>YOU ARE<set user="user"><map><name>userInfo</name>name</map></set></template>
+</category>
+<category><pattern>HOW ABOUT YOU</pattern>
+<template>aaaaaaaaaaaaaaaaaaaaa</template>
+</category>
+<category><pattern>HOW ABOUT YOU</pattern><that>YOUR NAME IS *</that>
+<template>MASTER</template>
+</category>
+</aiml>

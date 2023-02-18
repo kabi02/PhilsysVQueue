@@ -1,0 +1,6 @@
+0,CONTEXTAPPLYID1006,APPLY,*,<template/>,context_apply.aiml
+0,CONTEXTAPPLYID1007,*,APPLY,You can start by pressing "Apply for ID" and filling out the form.,context_apply.aiml
+0,CONTEXTAPPLYID1008,*,APPLY,You have to upload your documents. Atleast two document is Required. For more information you may ask me later.,context_apply.aiml
+0,CONTEXTAPPLYID1009,*,APPLY,You must upload a valid profile picture for your national I.D. To ensure validity follow this:,context_apply.aiml
+0,CONTEXTAPPLYID1010,*,APPLY,1. No Makeup#Newline2. Don't smile or frown#Newline3. No accessories#Newline4. No Eyewears#Newline5. No Contact lenses#Newline6. Proper Lighting,context_apply.aiml
+0,CONTEXTAPPLYID1011,*,APPLY,After your application is VALIDATED#Comma you may attend any registration center for your biometrics.,context_apply.aiml

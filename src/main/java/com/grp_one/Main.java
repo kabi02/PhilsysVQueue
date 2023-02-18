@@ -9,14 +9,17 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
+@Deprecated
 public class Main extends Application {
     private static Stage stage;
 
     @Override
     public void start(Stage stg) throws IOException {
         stage = stg;
-        setRoot("chatbot", "Login");
+        setRoot("userlogin", "Login");
+        // setRoot("login", "Admin Login");
         stage.show();
     }
 

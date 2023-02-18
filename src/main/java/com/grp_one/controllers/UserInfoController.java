@@ -22,6 +22,7 @@ import com.grp_one.*;
 import java.sql.*;
 
 public class UserInfoController {
+    SqlConnector dbConn = new SqlConnector();
     ObservableList<String> maritalStatusList = FXCollections.observableArrayList("Single", "Married", "Widowed", "Divorced", "Legally Separated", "Annulled", "Nullified");
     ObservableList<String> bloodTypeList = FXCollections.observableArrayList("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-", "Unknown");
     @FXML
@@ -48,6 +49,9 @@ public class UserInfoController {
 
     @FXML
     private ToggleGroup genderSel;
+
+    @FXML
+    private ToggleGroup filOrAlien;
 
     @FXML
     private TextField txtFieldCity;
@@ -97,9 +101,6 @@ public class UserInfoController {
     @FXML
     private RadioButton btnAlien;
 
-    @FXML
-    private TextField regInfoEmail;
-
     @FXML 
     private TextField regInfoContact;
 
@@ -108,7 +109,30 @@ public class UserInfoController {
 
     @FXML
     void goToUploadPic(ActionEvent event) throws Exception{
-        
+        Connection conn = dbConn.dbConn();
+        RadioButton selected = (RadioButton)genderSel.getSelectedToggle();
+        RadioButton selectedResidence = (RadioButton)filOrAlien.getSelectedToggle();
+        String lname, fname, mname, dob, city, province, country, bloodtype, filalien, mstatus, addrfu, addhlb, addstreet, addsubdiv, addcity, addprovince, addcountry, contact;
+        char sex;
+        lname = txtFieldLN.getText();
+        fname = txtFieldFN.getText();
+        mname = txtFieldMN.getText();
+        sex = selected.getText().charAt(0);
+        dob = dateBirth.getValue().toString();
+        city = txtFieldCity.getText();
+        province = txtFieldProv.getText();
+        country = txtFieldCountry.getText();
+        bloodtype = bloodTypeBox.getValue().toString();
+        filalien = selectedResidence.getText();
+        mstatus = maritalStatusBox.getValue().toString();
+        addrfu = addressRFU.getText();
+        addhlb = addressHLB.getText();
+        addstreet = addressStreet.getText();
+        addsubdiv = addressSub.getText();
+        addcity = addressCity.getText();
+        addprovince = addressProv.getText();
+        addcountry = addressCountry.getText();
+        contact = regInfoContact.getText();
     }
 
     @FXML

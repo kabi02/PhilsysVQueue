@@ -68,10 +68,8 @@
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="btnAlien" layoutX="483.0" layoutY="214.0" mnemonicParsing="false" text="Resident Alien" toggleGroup="$filOrAlien" />
-      <Label layoutX="10.0" layoutY="413.0" text="Email" />
-      <Label layoutX="9.0" layoutY="459.0" text="Contact" />
-      <TextField fx:id="regInfoEmail" layoutX="55.0" layoutY="409.0" promptText="Email..." />
-      <TextField fx:id="regInfoContact" layoutX="55.0" layoutY="455.0" promptText="Contact no..." />
+      <Label layoutX="9.0" layoutY="425.0" text="Contact" />
+      <TextField fx:id="regInfoContact" layoutX="65.0" layoutY="421.0" promptText="Contact no..." />
       <Button fx:id="btnFormNext" layoutX="700.0" layoutY="473.0" mnemonicParsing="false" onAction="#goToUploadPic" text="Next" />
    </children>
 </AnchorPane>

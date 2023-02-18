@@ -8,7 +8,9 @@
 }
 
 .botTab-return {
-  -fx-background-color: none;
+  -fx-background-color: rgb(84, 159, 209);
+  -fx-background-radius: 100px;
+  -fx-border-radius: 100px;
   -fx-text-fill: black;
 }
 

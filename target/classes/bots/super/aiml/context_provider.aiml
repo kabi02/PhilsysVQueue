@@ -2,7 +2,7 @@
 <aiml>
 <!-- File: context_provider.aiml -->
 <!-- Author: Dr. Richard S. Wallace -->
-<!-- Last modified: February 11, 2023 -->
+<!-- Last modified: February 18, 2023 -->
 <!--  -->
 <!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
 <!--  -->
@@ -19,6 +19,21 @@
 <template>PROFANITY</template>
 </category>
 <category><pattern>HELP</pattern>
-<template>HELP</template>
+<template>HELP<think><set name="topic">help</set></think></template>
+</category>
+<category><pattern>APPLY</pattern>
+<template>APPLY<think><set name="topic">apply</set></think></template>
+</category>
+<category><pattern>APPLICATION</pattern>
+<template><srai>STATUS</srai></template>
+</category>
+<category><pattern>BIOMETRICS</pattern>
+<template>BIO BEGIN<think><set name="topic">biometrics</set></think></template>
+</category>
+<category><pattern>CLAIM</pattern>
+<template>GET ID<think><set name="topic">claim</set></think></template>
+</category>
+<category><pattern>DOCUMENTS</pattern>
+<template>DOCUMENT<think><set name="topic">documents</set></think></template>
 </category>
 </aiml>

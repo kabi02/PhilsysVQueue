@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!-- File: context_apply.aiml -->
+<!-- Author: Dr. Richard S. Wallace -->
+<!-- Last modified: February 18, 2023 -->
+<!--  -->
+<!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
+<!--  -->
+<!-- The SUPER brain is Copyright &copy; 2023 by ALICE AI Foundation. -->
+<!--  -->
+<!-- The SUPER brain is released under the terms of the GNU Lesser General -->
+<!-- Public License, as published by the Free Software Foundation. -->
+<!--  -->
+<!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
+<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
+<!--  -->
+<!-- For more information see http://www.alicebot.org -->
+<category><pattern>CONTEXTAPPLYID1006</pattern><that>APPLY</that>
+<template><template/></template>
+</category>
+<topic name="APPLY">
+<category><pattern>CONTEXTAPPLYID1007</pattern>
+<template>You can start by pressing "Apply for ID" and filling out the form.</template>
+</category></topic>
+
+<topic name="APPLY">
+<category><pattern>CONTEXTAPPLYID1008</pattern>
+<template>You have to upload your documents. Atleast two document is Required. For more information you may ask me later.</template>
+</category></topic>
+
+<topic name="APPLY">
+<category><pattern>CONTEXTAPPLYID1009</pattern>
+<template>You must upload a valid profile picture for your national I.D. To ensure validity follow this:</template>
+</category></topic>
+
+<topic name="APPLY">
+<category><pattern>CONTEXTAPPLYID1010</pattern>
+<template>1. No Makeup
+2. Don't smile or frown
+3. No accessories
+4. No Eyewears
+5. No Contact lenses
+6. Proper Lighting</template>
+</category></topic>
+
+<topic name="APPLY">
+<category><pattern>CONTEXTAPPLYID1011</pattern>
+<template>After your application is VALIDATED, you may attend any registration center for your biometrics.</template>
+</category></topic>
+
+</aiml>

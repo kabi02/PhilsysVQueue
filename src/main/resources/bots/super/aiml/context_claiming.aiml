@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!-- File: context_claiming.aiml -->
+<!-- Author: Dr. Richard S. Wallace -->
+<!-- Last modified: February 18, 2023 -->
+<!--  -->
+<!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
+<!--  -->
+<!-- The SUPER brain is Copyright &copy; 2023 by ALICE AI Foundation. -->
+<!--  -->
+<!-- The SUPER brain is released under the terms of the GNU Lesser General -->
+<!-- Public License, as published by the Free Software Foundation. -->
+<!--  -->
+<!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
+<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
+<!--  -->
+<!-- For more information see http://www.alicebot.org -->
+<topic name="CLAIM">
+<category><pattern>CONTEXTCLAIMID1013</pattern><that>GET ID</that>
+<template>To claim your national ID, you must wait for it to be delivered right at your home!</template>
+</category></topic>
+
+<topic name="CLAIM">
+<category><pattern>CONTEXTCLAIMID1014</pattern>
+<template>Make sure that your application and biometrics are already processed</template>
+</category></topic>
+
+<topic name="CLAIM">
+<category><pattern>CONTEXTCLAIMID1015</pattern>
+<template>For more information please click "How to Apply</template>
+</category></topic>
+
+</aiml>

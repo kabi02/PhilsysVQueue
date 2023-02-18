@@ -17,7 +17,7 @@ public class User extends Application {
     @Override
     public void start(Stage stg) throws IOException {
         stage = stg;
-        setRoot("userdashboard", "Login");
+        setRoot("userlogin", "Login");
         stage.show();
     }
 

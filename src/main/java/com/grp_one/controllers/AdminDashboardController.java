@@ -211,16 +211,27 @@ public class AdminDashboardController implements Initializable {
         biometrics.setCursor(Cursor.HAND);
         finished.setCursor(Cursor.HAND);
         claiming.setCursor(Cursor.HAND);
+        btnView.setDisable(false);
+        btnDelete.setDisable(true);
         requests.setOnMouseClicked(event -> {
+            btnView.setDisable(false);
+            btnDelete.setDisable(true);
             requestsTable();
         });
         biometrics.setOnMouseClicked(event -> {
+            btnView.setDisable(false);
+            btnDelete.setDisable(true);
             biometricsTable();
         });
         finished.setOnMouseClicked(event -> {
+            btnView.setDisable(true);
+            btnDelete.setDisable(false);
+
             finishedTable();
         });
         claiming.setOnMouseClicked(event -> {
+            btnView.setDisable(false);
+            btnDelete.setDisable(true);
             claimingTable();
         });
         btnDelete.setOnMouseClicked(event -> {

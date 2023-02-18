@@ -45,7 +45,7 @@ public class UserApplicationHandler {
             try {
                 Connection conn = dbConn.dbConn();
                 String locationData = "INSERT INTO admin.user_address VALUES(?,?,?,?,?,?,?,?)";
-                String personalData = "INSERT INTO admin.user_personal_info VALUES(?,?,?,?,?,?,?,?,?)";
+                String personalData = "INSERT INTO admin.user_personal_info VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 String applicationData = "INSERT INTO admin.application_status VALUES(?,?,?,?)";
                 PreparedStatement stmt = conn.prepareStatement(applicationData);
                 stmt.setInt(1, sessionUID);
@@ -66,6 +66,10 @@ public class UserApplicationHandler {
                 stmt.setString(7, (String) userInfo.get(ChatContextProvider.MNAME));
                 stmt.setString(8, (String) userInfo.get(ChatContextProvider.LNAME));
                 stmt.setString(9, (String) userInfo.get(ChatContextProvider.FNAME));
+                stmt.setString(10, (String) userInfo.get(ChatContextProvider.CITY2));
+                stmt.setString(11, (String) userInfo.get(ChatContextProvider.PROVINCE2));
+                stmt.setString(12, (String) userInfo.get(ChatContextProvider.COUNTRY2));
+                stmt.setString(13, (String) userInfo.get(ChatContextProvider.CONTACT));
                 stmt.executeUpdate();
                 stmt = conn.prepareStatement(locationData);
                 stmt.setInt(1, sessionUID);

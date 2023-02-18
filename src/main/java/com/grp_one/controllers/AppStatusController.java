@@ -47,7 +47,7 @@ public class AppStatusController
             stmt.setInt(1, UserApplicationHandler.getSessionUID());
             rs = stmt.executeQuery();
             if (!rs.isBeforeFirst()) {
-                lblAppStatus.setText("No Application Yet!");
+                lblAppStatus.setText("No Application");
             } else {
                 rs.next();
                 lblAppStatus.setText(rs.getString(1));

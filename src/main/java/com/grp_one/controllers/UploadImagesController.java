@@ -15,6 +15,8 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
@@ -24,6 +26,9 @@ public class UploadImagesController
     SqlConnector dbConn = new SqlConnector();
     FileChooser chooser;
     File doc1, doc2, imgProfile;
+
+    @FXML
+    private ImageView profilePicture;
 
     @FXML
     private Button btnDoc1;
@@ -43,10 +48,6 @@ public class UploadImagesController
         ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().add(type);
 
-        btnDoc1.setMaxWidth(100.0);
-        btnDoc2.setMaxWidth(100.0);
-        btnUploadPic.setMaxWidth(100.0);
-
         btnDoc1.setOnAction(event -> {
             chooser = new FileChooser();
             chooser.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.jpg", "*.png"));
@@ -65,11 +66,16 @@ public class UploadImagesController
             } catch (Exception e) {
             }
         });
+
         btnUploadPic.setOnAction(event -> {
             chooser = new FileChooser();
             chooser.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.jpg", "*.png"));
             imgProfile = chooser.showOpenDialog(null);
             try {
+                Image person = new Image(imgProfile.getAbsolutePath());
+                profilePicture.setFitHeight(150);
+                profilePicture.setFitWidth(150);
+                profilePicture.setImage(person);
                 btnUploadPic.setText(imgProfile.getName());
             } catch (Exception e) {
             }

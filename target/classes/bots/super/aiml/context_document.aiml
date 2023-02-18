@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!-- File: context_document.aiml -->
+<!-- Author: Dr. Richard S. Wallace -->
+<!-- Last modified: February 18, 2023 -->
+<!--  -->
+<!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
+<!--  -->
+<!-- The SUPER brain is Copyright &copy; 2023 by ALICE AI Foundation. -->
+<!--  -->
+<!-- The SUPER brain is released under the terms of the GNU Lesser General -->
+<!-- Public License, as published by the Free Software Foundation. -->
+<!--  -->
+<!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
+<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
+<!--  -->
+<!-- For more information see http://www.alicebot.org -->
+<topic name="DOCUMENTS">
+<category><pattern>CONTEXTDOCID1016</pattern><that>DOCUMENT</that>
+<template>Here are the list of PRIMARY DOCUMENTS:</template>
+</category></topic>
+
+<topic name="DOCUMENTS">
+<category><pattern>CONTEXTDOCID1016A</pattern>
+<template>1. PSA-issued Certificate of Live Birth and one (1) government-issued identification document which bears a full name, front-facing photograph, and signature or thumb mark</template>
+</category></topic>
+
+<topic name="DOCUMENTS">
+<category><pattern>CONTEXTDOCID1016B</pattern>
+<template>2. Philippine Passport or ePassport issued by the Department of Foreign Affairs (DFA)</template>
+</category></topic>
+
+<topic name="DOCUMENTS">
+<category><pattern>CONTEXTDOCID1016C</pattern>
+<template>3. Unified Multi-purpose ldentification (UMID) Card issued by the Government Service lnsurance System (GSIS) or Social Security Systen (SSS)</template>
+</category></topic>
+
+<topic name="DOCUMENTS">
+<category><pattern>CONTEXTDOCID1016D</pattern>
+<template>4. Student’s License Permit or Non- Professional/Professional Driver’s License issued by the LTO.</template>
+</category></topic>
+
+<topic name="DOCUMENTS">
+<category><pattern>CONTEXTDOCID1016E</pattern>
+<template>(If there are discrepancies between the PSA-issued Certificate of Live Birth and the government-issued ID presented, the PSA-issued Certificate of Live Birth would be considered as a secondary supporting document)</template>
+</category></topic>
+
+<topic name="DOCUMENTS">
+<category><pattern>CONTEXTDOCID1017</pattern>
+<template>Here are the list of SECONDARY DOCUMENTS:
+&gt;PSA-issued Report of Birth;
+&gt;PSA-issued Certificate of Foundling;
+&gt;Integrated Bar of the Philippines (IBP) Identification Card;
+&gt;Professional Regulatory Commission (PRC) ID;
+&gt;Seaman’s Book (Seafarer’s Record Book)</template>
+</category></topic>
+
+<topic name="DOCUMENTS">
+<category><pattern>CONTEXTDOCID1017A</pattern>
+<template>&gt;Overseas Workers Welfare Administration (OWWA) ID;
+&gt;Senior Citizen’s lD issued by the Office of Senior Citizens Affairs (OSCA) and/or LocalGovernment Units (LGU);
+&gt;Social Security System (SSS) lD;
+&gt;Pantawid Pamilyang Pilipino Program (4Ps) ID;
+&gt;License to Own or Possess Firearms (LTOPF)</template>
+</category></topic>
+
+<topic name="DOCUMENTS">
+<category><pattern>CONTEXTDOCID1017B</pattern>
+<template>National Bureau of lnvestigation (NBl) Clearance;
+&gt;Police Clearance/ID;
+&gt;Solo Parent’s ID;
+&gt;Person with Disability (PWD) lD issued by the National Council of Disability Affairs (NCDA) or its regional counterpart, Office of the Mayor, Department of Social Welfare and Development (DSWD) Office and other participating organizations with a Memorandum of Agreement with the Department of Health (DOH)</template>
+</category></topic>
+
+<topic name="DOCUMENTS">
+<category><pattern>CONTEXTDOCID1017C</pattern>
+<template>&gt;Voter’s lD issued by the Commission on Elections (COMELEC);
+&gt;Postal lD issued by the Philippine Postal Corporation (PhlPost);
+&gt;Taxpayer ldentification Number (TlN) Ld;
+&gt;PhilHealth ID;
+&gt;Special Resident Retiree’s Visa (SRRV) issued by the Philippine Retirement Authority (PRA)</template>
+</category></topic>
+
+<topic name="DOCUMENTS">
+<category><pattern>CONTEXTDOCID1017D</pattern>
+<template>&gt;National ID from other countries;
+&gt;Residence ID from other countries;
+&gt;Professional ldentification Card issued by the Maritime lndustry Authority (MARINA);
+&gt;Eligibility Card issued by the Civil Service Commission</template>
+</category></topic>
+
+<topic name="DOCUMENTS">
+<category><pattern>CONTEXTDOCID1018</pattern>
+<template>The following identification documents shall be accepted as secondary supporting documents provided that they have a front-facing photograph, signature/thumbmark, full name, permanent address, and date of birth.</template>
+</category></topic>
+
+<topic name="DOCUMENTS">
+<category><pattern>CONTEXTDOCID1018A</pattern>
+<template>&gt;Employee ID
+&gt;School ID (for pre-school, elementary and signature/thumbmark of the lD owner is not required);
+&gt;City/Municipal ID
+&gt;Barangay Clearance/Certificate</template>
+</category></topic>
+
+<topic name="DOCUMENTS">
+<category><pattern>CONTEXTDOCID1018B</pattern>
+<template>&gt;Barangay ID
+&gt;Voter’s Certification issued by the COMELEC;
+&gt;Prison Record; or
+&gt;Certificate of Detention</template>
+</category></topic>
+
+</aiml>

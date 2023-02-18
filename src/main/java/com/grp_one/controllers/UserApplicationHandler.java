@@ -66,9 +66,15 @@ public class UserApplicationHandler {
                 stmt.setString(7, (String) userInfo.get(ChatContextProvider.MNAME));
                 stmt.setString(8, (String) userInfo.get(ChatContextProvider.LNAME));
                 stmt.setString(9, (String) userInfo.get(ChatContextProvider.FNAME));
+<<<<<<< HEAD
                 stmt.setString(10, (String) userInfo.get(ChatContextProvider.CITY2));
                 stmt.setString(11, (String) userInfo.get(ChatContextProvider.PROVINCE2));
                 stmt.setString(12, (String) userInfo.get(ChatContextProvider.COUNTRY2));
+=======
+                stmt.setString(10, (String) userInfo.get(ChatContextProvider.CITY));
+                stmt.setString(11, (String) userInfo.get(ChatContextProvider.PROVINCE));
+                stmt.setString(12, (String) userInfo.get(ChatContextProvider.COUNTRY));
+>>>>>>> bdbc45c227eb22e9fc2af66e1e8bf906c20a8ec3
                 stmt.setString(13, (String) userInfo.get(ChatContextProvider.CONTACT));
                 stmt.executeUpdate();
                 stmt = conn.prepareStatement(locationData);
@@ -77,9 +83,9 @@ public class UserApplicationHandler {
                 stmt.setString(3, (String) userInfo.get(ChatContextProvider.HOUSE));
                 stmt.setString(4, (String) userInfo.get(ChatContextProvider.STRT));
                 stmt.setString(5, (String) userInfo.get(ChatContextProvider.SUBDIV));
-                stmt.setString(6, (String) userInfo.get(ChatContextProvider.CITY));
-                stmt.setString(7, (String) userInfo.get(ChatContextProvider.PROVINCE));
-                stmt.setString(8, (String) userInfo.get(ChatContextProvider.COUNTRY));
+                stmt.setString(6, (String) userInfo.get(ChatContextProvider.CITY2));
+                stmt.setString(7, (String) userInfo.get(ChatContextProvider.PROVINCE2));
+                stmt.setString(8, (String) userInfo.get(ChatContextProvider.COUNTRY2));
                 stmt.executeUpdate();
             } catch (Exception e) {
                 System.out.println(e);

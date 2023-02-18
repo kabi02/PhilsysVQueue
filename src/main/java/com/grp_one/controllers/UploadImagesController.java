@@ -42,9 +42,9 @@ public class UploadImagesController
         ButtonType type = new ButtonType("Ok", ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().add(type);
 
-        btnDoc1.setMaxWidth(300);
-        btnDoc2.setMaxWidth(300);
-        btnUploadPic.setMaxWidth(300);
+        btnDoc1.setMaxWidth(100.0);
+        btnDoc2.setMaxWidth(100.0);
+        btnUploadPic.setMaxWidth(100.0);
 
         btnDoc1.setOnAction(event -> {
             chooser = new FileChooser();

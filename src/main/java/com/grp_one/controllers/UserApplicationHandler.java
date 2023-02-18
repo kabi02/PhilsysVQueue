@@ -47,7 +47,12 @@ public class UserApplicationHandler {
                 String locationData = "INSERT INTO admin.user_address VALUES(?,?,?,?,?,?,?,?)";
                 String personalData = "INSERT INTO admin.user_personal_info VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 String applicationData = "INSERT INTO admin.application_status VALUES(?,?,?,?)";
-                PreparedStatement stmt = conn.prepareStatement(applicationData);
+                String deleteApplicationIfExists = "DELETE FROM admin.application_status WHERE admin.application_status.userID = ?";
+                PreparedStatement stmt = conn.prepareStatement(deleteApplicationIfExists);
+                stmt.setInt(1, sessionUID);
+                stmt.executeUpdate();
+
+                stmt = conn.prepareStatement(applicationData);
                 stmt.setInt(1, sessionUID);
                 stmt.setDate(2, dateOfTransaction);
                 stmt.setString(3, CustomerInfo.PROCESS);
@@ -55,6 +60,7 @@ public class UserApplicationHandler {
                         (new StringBuilder(String.valueOf(sessionUID * System.currentTimeMillis())).reverse()
                                 .toString()).substring(0, 9) + String.valueOf(dateOfTransaction));
                 stmt.executeUpdate();
+
                 stmt = conn.prepareStatement(personalData);
                 stmt.setInt(1, sessionUID);
                 Date date = Date.valueOf((LocalDate) userInfo.get(ChatContextProvider.BDAY));
@@ -66,15 +72,9 @@ public class UserApplicationHandler {
                 stmt.setString(7, (String) userInfo.get(ChatContextProvider.MNAME));
                 stmt.setString(8, (String) userInfo.get(ChatContextProvider.LNAME));
                 stmt.setString(9, (String) userInfo.get(ChatContextProvider.FNAME));
-<<<<<<< HEAD
                 stmt.setString(10, (String) userInfo.get(ChatContextProvider.CITY2));
                 stmt.setString(11, (String) userInfo.get(ChatContextProvider.PROVINCE2));
                 stmt.setString(12, (String) userInfo.get(ChatContextProvider.COUNTRY2));
-=======
-                stmt.setString(10, (String) userInfo.get(ChatContextProvider.CITY));
-                stmt.setString(11, (String) userInfo.get(ChatContextProvider.PROVINCE));
-                stmt.setString(12, (String) userInfo.get(ChatContextProvider.COUNTRY));
->>>>>>> bdbc45c227eb22e9fc2af66e1e8bf906c20a8ec3
                 stmt.setString(13, (String) userInfo.get(ChatContextProvider.CONTACT));
                 stmt.executeUpdate();
                 stmt = conn.prepareStatement(locationData);

@@ -51,7 +51,7 @@
       <Label layoutX="9.0" layoutY="425.0" text="Contact" />
       <TextField fx:id="regInfoContact" editable="false" layoutX="65.0" layoutY="421.0" promptText="Contact no..." />
       <Button fx:id="btnAccept" layoutX="693.0" layoutY="475.0" mnemonicParsing="false" text="Accept" />
-      <Button layoutX="628.0" layoutY="475.0" mnemonicParsing="false" text="Decline" />
+      <Button fx:id="decline" layoutX="628.0" layoutY="475.0" mnemonicParsing="false" text="Decline" />
       <TextField fx:id="txtSex" editable="false" layoutX="54.0" layoutY="101.0" promptText="Sex..." />
       <TextField fx:id="txtDob" editable="false" layoutX="298.0" layoutY="101.0" promptText="Date of birth..." />
       <TextField fx:id="txtBloodType" editable="false" layoutX="85.0" layoutY="208.0" promptText="Blood type..." />

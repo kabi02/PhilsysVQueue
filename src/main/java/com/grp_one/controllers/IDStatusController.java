@@ -50,6 +50,7 @@ public class IDStatusController implements Initializable {
             rs = stmt.executeQuery();
             if (!rs.isBeforeFirst()) {
                 lblAppStatus.setText("No Application Yet!");
+                lblIDStatus.setText("Pending Claim Status");
             } else {
                 rs.next();
                 lblAppStatus.setText(rs.getString(1));

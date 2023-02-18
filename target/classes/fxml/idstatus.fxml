@@ -7,26 +7,29 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="303.0" prefWidth="381.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp_one.controllers.IDStatusController">
    <children>
-      <Label fx:id="lblCTN" alignment="TOP_CENTER" layoutX="72.0" layoutY="126.0" prefHeight="27.0" prefWidth="239.0" text="CTN Here">
+      <Label fx:id="lblCTN" alignment="CENTER" layoutX="71.0" layoutY="139.0" prefHeight="27.0" prefWidth="239.0" text="CTN Here">
          <font>
-            <Font size="15.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblIDStatus" alignment="TOP_CENTER" layoutX="50.0" layoutY="159.0" prefHeight="117.0" prefWidth="282.0" text="ID Status Here">
+      <Label fx:id="lblIDStatus" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="212.0" prefHeight="23.0" prefWidth="282.0" text="Pending Claim Status">
          <font>
-            <Font size="15.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="113.0" layoutY="56.0" text="PhilID Status">
+      <Label layoutX="99.0" layoutY="13.0" text="Phil ID Status">
          <font>
             <Font name="System Bold" size="29.0" />
          </font>
       </Label>
-      <Label fx:id="lblAppStatus" layoutX="114.0" layoutY="93.0" text="Transaction Number">
+      <Label fx:id="lblAppStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="108.0" layoutY="82.0" prefHeight="27.0" prefWidth="167.0" text="Status">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <Hyperlink fx:id="linkIDGoBack" layoutX="315.0" layoutY="23.0" onAction="#goToDashboard" text="Go back" />
+      <Label layoutX="136.0" layoutY="167.0" text="Transaction Number" />
+      <Label layoutX="142.0" layoutY="109.0" text="Application Status" />
+      <Label layoutX="166.0" layoutY="239.0" text="ID Status" />
    </children>
 </AnchorPane>

@@ -6,17 +6,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="218.0" prefWidth="421.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp_one.controllers.UploadImagesController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="31.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="profilePicture" fitHeight="150.0" fitWidth="150.0" layoutX="31.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/blankpfp.png" />
+            <Image url="@../imgs/blankpfp.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnUploadPic" layoutX="57.0" layoutY="98.0" mnemonicParsing="false" text="Upload Image..." />
-      <Button fx:id="btnDoc1" layoutX="207.0" layoutY="86.0" mnemonicParsing="false" text="Upload Supporting Document 1" />
-      <Button fx:id="btnDoc2" layoutX="207.0" layoutY="123.0" mnemonicParsing="false" text="Upload Supporting Document 2" />
+      <Button fx:id="btnUploadPic" layoutX="207.0" layoutY="73.0" maxWidth="100.0" mnemonicParsing="false" text="Upload Image..." />
+      <Button fx:id="btnDoc1" layoutX="207.0" layoutY="112.0" maxWidth="200.0" mnemonicParsing="false" text="Upload Supporting Document 1" />
+      <Button fx:id="btnDoc2" layoutX="207.0" layoutY="149.0" maxWidth="200.0" mnemonicParsing="false" text="Upload Supporting Document 2" />
       <Hyperlink fx:id="linkFinishUpload" layoutX="354.0" layoutY="24.0" text="Finish" />
    </children>
 </AnchorPane>

@@ -21,7 +21,7 @@ import javafx.scene.control.ToggleGroup;
 import com.grp_one.*;
 import java.sql.*;
 
-public class UserInfoController {
+public class UserInfoController implements Initializable {
     ObservableList<String> maritalStatusList = FXCollections.observableArrayList("Single", "Married", "Widowed",
             "Divorced", "Legally Separated", "Annulled", "Nullified");
     ObservableList<String> bloodTypeList = FXCollections.observableArrayList("A+", "A-", "B+", "B-", "AB+", "AB-", "O+",
@@ -31,14 +31,6 @@ public class UserInfoController {
 
     @FXML
     private ChoiceBox<String> maritalStatusBox;
-
-    @FXML
-    private void initialize() {
-        maritalStatusBox.setValue("Single");
-        maritalStatusBox.setItems(maritalStatusList);
-        bloodTypeBox.setValue("A+");
-        bloodTypeBox.setItems(bloodTypeList);
-    }
 
     @FXML
     private RadioButton btnFemale;
@@ -119,6 +111,14 @@ public class UserInfoController {
         User.setRoot("userdashboard", "User Dashboard");
         User.centerRoot();
         User.showStage();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        maritalStatusBox.setValue("Single");
+        maritalStatusBox.setItems(maritalStatusList);
+        bloodTypeBox.setValue("A+");
+        bloodTypeBox.setItems(bloodTypeList);
     }
 
 }

@@ -60,7 +60,7 @@ public class ChatBot extends Application {
     }
 
     public static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/fxml/" + fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ChatBot.class.getResource("/fxml/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }
 

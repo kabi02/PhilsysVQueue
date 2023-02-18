@@ -126,7 +126,7 @@ public class UserInfoController implements Initializable {
             userInfo.put(ChatContextProvider.FNAME, txtFieldFN.getText());
             userInfo.put(ChatContextProvider.MNAME, txtFieldMN.getText());
             userInfo.put(ChatContextProvider.SEX, selected.getText().charAt(0));
-            userInfo.put(ChatContextProvider.BDAY, dateBirth.getValue().toString());
+            userInfo.put(ChatContextProvider.BDAY, dateBirth.getValue());
             userInfo.put(ChatContextProvider.CITY, txtFieldCity.getText());
             userInfo.put(ChatContextProvider.PROVINCE, txtFieldProv.getText());
             userInfo.put(ChatContextProvider.COUNTRY, txtFieldCountry.getText());

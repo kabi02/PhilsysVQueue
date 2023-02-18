@@ -1,6 +1,7 @@
 package com.grp_one.controllers;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -74,12 +75,19 @@ public class UploadImagesController
             }
         });
         linkFinishUpload.setOnAction(event -> {
-            if (imgProfile == null || doc1 == null || doc2 == null) {
-                dialog.setContentText("Incomplete Information");
-                dialog.showAndWait();
-            } else {
-                UserApplicationHandler.uploadInfo();
+            UserApplicationHandler.uploadInfo();
+            try {
+                User.setRoot("appsuccess", "Congratulations!");
+            } catch (IOException e) {
             }
+            User.centerRoot();
+            User.showStage();
+            // if (imgProfile == null || doc1 == null || doc2 == null) {
+            // dialog.setContentText("Incomplete Information");
+            // dialog.showAndWait();
+            // } else {
+
+            // }
         });
 
     }

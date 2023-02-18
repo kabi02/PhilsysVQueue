@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 
 public class User extends Application {
-    private static Stage stage;
+    private static Stage stage = new Stage();
 
     @Override
     public void start(Stage stg) throws IOException {

@@ -64,6 +64,7 @@ public class UserLoginController implements Initializable {
                         if (rs.getString("userPass").equals(userPass)) {
                             dialog.setContentText("Login Succesful!");
                             dialog.show();
+                            UserApplicationHandler.setSessionUID(rs.getInt("userID"));
                             User.setRoot("userdashboard", "User Dashboard");
                             User.centerRoot();
                             User.showStage();

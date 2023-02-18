@@ -1,6 +1,7 @@
 package com.grp_one.controllers;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 import javafx.css.Styleable;
@@ -20,13 +21,13 @@ public class AdminDashboardController implements Initializable {
     private TableView<Object> dashboardTable;
 
     @FXML
-    private TableColumn<String, String> ctnColumn;
+    private TableColumn<CustomerInfo, String> ctnColumn;
     @FXML
-    private TableColumn<String, String> nameColumn;
+    private TableColumn<CustomerInfo, String> nameColumn;
     @FXML
-    private TableColumn<String, String> dateColumn;
+    private TableColumn<CustomerInfo, String> dateColumn;
     @FXML
-    private TableColumn<Button, Button> actionColumn;
+    private TableColumn<CustomerInfo, Button> actionColumn;
 
     @FXML
     private void logoutUser() throws Exception {
@@ -41,7 +42,6 @@ public class AdminDashboardController implements Initializable {
         ctnColumn.setReorderable(false);
         ctnColumn.setEditable(false);
 
-        nameColumn.setResizable(false);
         nameColumn.setReorderable(false);
         nameColumn.setEditable(false);
 

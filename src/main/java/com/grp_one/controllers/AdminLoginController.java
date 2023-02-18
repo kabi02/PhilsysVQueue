@@ -14,9 +14,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import java.sql.*;
 
-import com.grp_one.*;
+import com.grp_one.Admin;
 
-public class LoginController implements Initializable {
+public class AdminLoginController implements Initializable {
 
     SqlConnector dbConn = new SqlConnector();
 
@@ -34,26 +34,25 @@ public class LoginController implements Initializable {
         System.out.println("Username: " + adminUser + "\nPassword: " + adminPass);
         try {
             Connection conn = dbConn.dbConn();
-            String sql = "select * from admin.admin_acc where admin_un = \"" + adminUser + "\" and admin_pw = \"" +adminPass + "\"";
+            String sql = "select * from admin.admin_acc where admin_un = \"" + adminUser + "\" and admin_pw = \""
+                    + adminPass + "\"";
             Statement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()) {
-                if(rs.getString("admin_un").equals(adminUser)) {
-                    if(rs.getString("admin_pw").equals(adminPass)) {
+            while (rs.next()) {
+                if (rs.getString("admin_un").equals(adminUser)) {
+                    if (rs.getString("admin_pw").equals(adminPass)) {
                         JOptionPane.showMessageDialog(null, "Login Success");
-                            Main.setRoot("dashboard", "Dashboard");
-                            Main.centerRoot();
-                            Main.showStage();
-                    }
-                    else {
+                        Admin.setRoot("admindashboard", "Dashboard");
+                        Admin.centerRoot();
+                        Admin.showStage();
+                    } else {
                         JOptionPane.showMessageDialog(null, "Incorrect Username/Password!");
                     }
-                }
-                else {
+                } else {
                     JOptionPane.showMessageDialog(null, "Incorrect Username/Password!");
                 }
             }
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }

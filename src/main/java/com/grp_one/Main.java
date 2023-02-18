@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
+@Deprecated
 public class Main extends Application {
     private static Stage stage;
 
@@ -18,6 +19,7 @@ public class Main extends Application {
     public void start(Stage stg) throws IOException {
         stage = stg;
         setRoot("userlogin", "Login");
+        // setRoot("login", "Admin Login");
         stage.show();
     }
 

@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
-import com.grp_one.Main;
+import com.grp_one.User;
 import com.grp_one.ChatBot;
 
 import javafx.application.Application;
@@ -20,6 +20,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import com.grp_one.*;
 
 public class UserDashboardController implements Initializable {
 
@@ -43,17 +45,17 @@ public class UserDashboardController implements Initializable {
     private Hyperlink logoutuser;
 
     @FXML
-    void openAppStatus(ActionEvent event) throws Exception{
-        Main.setRoot("appstatus", "Check Application Status");
-        Main.centerRoot();
-        Main.showStage();
+    void openAppStatus(ActionEvent event) throws Exception {
+        User.setRoot("appstatus", "Check Application Status");
+        User.centerRoot();
+        User.showStage();
     }
 
     @FXML
-    void openIDStatus(ActionEvent event) throws Exception{
-        Main.setRoot("idstatus", "Check ID Status");
-        Main.centerRoot();
-        Main.showStage();
+    void openIDStatus(ActionEvent event) throws Exception {
+        User.setRoot("idstatus", "Check ID Status");
+        User.centerRoot();
+        User.showStage();
     }
 
     @FXML
@@ -80,17 +82,17 @@ public class UserDashboardController implements Initializable {
     void backToUserLogin(ActionEvent event) throws Exception {
         int confirm = JOptionPane.showConfirmDialog(null, "Do you really want to logout?");
         if (confirm == 0) {
-            Main.setRoot("userlogin", "User Login");
-            Main.centerRoot();
-            Main.showStage();
+            User.setRoot("userlogin", "User Login");
+            User.centerRoot();
+            User.showStage();
         }
     }
 
     @FXML
-    void openRegForm(ActionEvent event) throws Exception{
-        Main.setRoot("userinfo", "Registration Form");
-        Main.centerRoot();
-        Main.showStage();
+    void openRegForm(ActionEvent event) throws Exception {
+        User.setRoot("userinfo", "Registration Form");
+        User.centerRoot();
+        User.showStage();
     }
 
     @Override

@@ -67,9 +67,9 @@ public class UserSignupController
 
     @FXML
     void backToLogin(ActionEvent event) throws Exception {
-        Main.setRoot("userlogin", "User Login");
-        Main.centerRoot();
-        Main.showStage();
+        User.setRoot("userlogin", "User Login");
+        User.centerRoot();
+        User.showStage();
     }
 
     @Override

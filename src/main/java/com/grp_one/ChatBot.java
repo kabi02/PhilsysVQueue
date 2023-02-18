@@ -60,8 +60,17 @@ public class ChatBot extends Application {
     }
 
     public static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/fxml/" + fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ChatBot.class.getResource("/fxml/" + fxml + ".fxml"));
         return fxmlLoader.load();
+    }
+
+    public static String getResourcesPath() {
+        File currDir = new File(".");
+        String path = currDir.getAbsolutePath();
+        path = path.substring(0, path.length() - 2);
+        // System.out.println(path);
+        String resourcesPath = path + File.separator + "src" + File.separator + "main" + File.separator + "resources";
+        return resourcesPath;
     }
 
     public static void main(String[] args) {

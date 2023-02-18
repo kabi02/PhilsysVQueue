@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!-- File: context_biometrics.aiml -->
+<!-- Author: Dr. Richard S. Wallace -->
+<!-- Last modified: February 15, 2023 -->
+<!--  -->
+<!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
+<!--  -->
+<!-- The SUPER brain is Copyright &copy; 2023 by ALICE AI Foundation. -->
+<!--  -->
+<!-- The SUPER brain is released under the terms of the GNU Lesser General -->
+<!-- Public License, as published by the Free Software Foundation. -->
+<!--  -->
+<!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
+<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
+<!--  -->
+<!-- For more information see http://www.alicebot.org -->
+<topic name="BIOMETRICS">
+<category><pattern>CONTEXTBIOID1012</pattern><that>BIO BEGIN</that>
+<template><condition name="status">
+    <li value="unknown">You must first apply. 
+If your application is approved.
+You may go to the nearest registration center for your biometrics.</li>
+    <li value="none">You must first apply. 
+If your application is approved.
+You may go to the nearest registration center for your biometrics.</li>
+    <li value="declined">You must re-apply before you can get your biometrics.
+To re-apply, just click "How to apply"</li>
+    <li value="approved">Please go to the nearest registration center for your biometrics</li>
+    <li value="biometrics">Please go to the nearest registration center for your biometrics</li>
+    <li value="claiming">Your biometrics had been approved. Please wait for your National I.D.</li>
+    <li>You must first apply. 
+If your application is approved.
+You may go to the nearest registration center for your biometrics.</li>
+</condition></template>
+</category></topic>
+
+</aiml>

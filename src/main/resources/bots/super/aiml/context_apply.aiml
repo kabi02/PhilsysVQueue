@@ -2,7 +2,11 @@
 <aiml>
 <!-- File: context_apply.aiml -->
 <!-- Author: Dr. Richard S. Wallace -->
+<<<<<<< HEAD
+<!-- Last modified: February 15, 2023 -->
+=======
 <!-- Last modified: February 17, 2023 -->
+>>>>>>> 272f714c0789b25518d900244ca1d8f04c3fc046
 <!--  -->
 <!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
 <!--  -->
@@ -30,7 +34,7 @@
 
 <topic name="APPLY">
 <category><pattern>CONTEXTAPPLYID1009</pattern>
-<template>You must upload a valid profile picture for your national I.D. To ensure balidity palow this:</template>
+<template>You must upload a valid profile picture for your national I.D. To ensure validity follow this:</template>
 </category></topic>
 
 <topic name="APPLY">

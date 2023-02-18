@@ -2,7 +2,15 @@
 <aiml>
 <!-- File: update.aiml -->
 <!-- Author: Dr. Richard S. Wallace -->
+<<<<<<< HEAD
+<<<<<<< HEAD
+<!-- Last modified: February 15, 2023 -->
+=======
+<!-- Last modified: February 13, 2023 -->
+>>>>>>> df95365a73f62eef29b2e50edd54def2cae6e8fd
+=======
 <!-- Last modified: February 17, 2023 -->
+>>>>>>> 272f714c0789b25518d900244ca1d8f04c3fc046
 <!--  -->
 <!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
 <!--  -->
@@ -16,7 +24,15 @@
 <!--  -->
 <!-- For more information see http://www.alicebot.org -->
 <category><pattern>BUILD</pattern>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<template>Wed Feb 15 20:28:39 PST 2023</template>
+=======
+<template>Mon Feb 13 09:03:14 PST 2023</template>
+>>>>>>> df95365a73f62eef29b2e50edd54def2cae6e8fd
+=======
 <template>Fri Feb 17 19:50:28 PST 2023</template>
+>>>>>>> 272f714c0789b25518d900244ca1d8f04c3fc046
 </category>
 <category><pattern>DELEVLOPMENT ENVIRONMENT</pattern>
 <template>Program AB 0.0.4.2 beta -- AI Foundation Reference AIML 2.0 implementation</template>

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp_one.controllers.ChatBotController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp_one.controllers.Bot.ChatBotController">
    <children>
       <ScrollPane fx:id="session" layoutY="49.0" prefHeight="280.0" prefWidth="359.0" />
       <AnchorPane prefHeight="49.0" prefWidth="359.0" styleClass="botTab-header" stylesheets="@../styles/bot.css">

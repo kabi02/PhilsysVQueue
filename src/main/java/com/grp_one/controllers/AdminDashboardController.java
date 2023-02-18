@@ -12,9 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-import com.grp_one.Main;
+import com.grp_one.Admin;
 
-public class DashboardController implements Initializable {
+public class AdminDashboardController implements Initializable {
 
     @FXML
     private TableView<Object> dashboardTable;
@@ -30,9 +30,9 @@ public class DashboardController implements Initializable {
 
     @FXML
     private void logoutUser() throws Exception {
-        Main.setRoot("login", "Login");
-        Main.centerRoot();
-        Main.showStage();
+        Admin.setRoot("adminlogin", "Login");
+        Admin.centerRoot();
+        Admin.showStage();
     }
 
     @Override

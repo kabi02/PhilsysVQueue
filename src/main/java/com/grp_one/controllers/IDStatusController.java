@@ -1,6 +1,6 @@
 package com.grp_one.controllers;
 
-import com.grp_one.Main;
+import com.grp_one.*;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,10 +22,10 @@ public class IDStatusController {
     private Hyperlink linkIDGoBack;
 
     @FXML
-    void goToDashboard(ActionEvent event) throws Exception{
-        Main.setRoot("userdashboard", "User Dashboard");
-        Main.centerRoot();
-        Main.showStage();
+    void goToDashboard(ActionEvent event) throws Exception {
+        User.setRoot("userdashboard", "User Dashboard");
+        User.centerRoot();
+        User.showStage();
     }
 
 }

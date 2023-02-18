@@ -36,6 +36,12 @@ public class AdminDashboardController implements Initializable {
     SqlConnector dbConn = new SqlConnector();
 
     @FXML
+    private Button btnDelete;
+
+    @FXML
+    private Button btnView;
+
+    @FXML
     private TableView<CustomerInfo> dashboardTable;
 
     @FXML
@@ -59,6 +65,12 @@ public class AdminDashboardController implements Initializable {
     @FXML
     private void logoutUser() throws Exception {
         Admin.setRoot("adminlogin", "Login");
+        Admin.centerRoot();
+        Admin.showStage();
+    }
+    @FXML
+    void viewInfo(ActionEvent event) throws Exception{
+        Admin.setRoot("userinfo_adminside", "Customer Details");
         Admin.centerRoot();
         Admin.showStage();
     }
@@ -90,14 +102,14 @@ public class AdminDashboardController implements Initializable {
             Connection conn = dbConn.dbConn();
             PreparedStatement stmt = null;
             ResultSet rs = null;
-            String sql = "SELECT `name`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = ?";
+            String sql = "SELECT `lname`, `fname`, `mname`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, CustomerInfo.CLAIMED);
             rs = stmt.executeQuery();
             while (rs.next()) {
                 System.out.println("HELLO WORLD");
                 data.add(new CustomerInfo(
-                        rs.getString("name"),
+                        rs.getString("lname") + ", " + rs.getString("fname") +" "+ rs.getString("mname"),
                         rs.getString("CTN"),
                         rs.getDate("transaction_date").toLocalDate()));
                 dashboardTable.setItems(data);
@@ -114,14 +126,14 @@ public class AdminDashboardController implements Initializable {
             Connection conn = dbConn.dbConn();
             PreparedStatement stmt = null;
             ResultSet rs = null;
-            String sql = "SELECT `name`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = ?";
+            String sql = "SELECT `lname`, `fname`, `mname`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, CustomerInfo.CLAIMING);
             rs = stmt.executeQuery();
             while (rs.next()) {
                 System.out.println("HELLO WORLD");
                 data.add(new CustomerInfo(
-                        rs.getString("name"),
+                        rs.getString("lname") + ", " + rs.getString("fname") + " "+rs.getString("mname"),
                         rs.getString("CTN"),
                         rs.getDate("transaction_date").toLocalDate()));
                 dashboardTable.setItems(data);
@@ -138,14 +150,14 @@ public class AdminDashboardController implements Initializable {
             Connection conn = dbConn.dbConn();
             PreparedStatement stmt = null;
             ResultSet rs = null;
-            String sql = "SELECT `name`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = ?";
+            String sql = "SELECT `lname`, `fname`, `mname`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, CustomerInfo.BIOMETRICS);
             rs = stmt.executeQuery();
             while (rs.next()) {
                 System.out.println("HELLO WORLD");
                 data.add(new CustomerInfo(
-                        rs.getString("name"),
+                        rs.getString("lname") + ", " + rs.getString("fname") + " "+rs.getString("mname"),
                         rs.getString("CTN"),
                         rs.getDate("transaction_date").toLocalDate()));
                 dashboardTable.setItems(data);
@@ -163,14 +175,14 @@ public class AdminDashboardController implements Initializable {
             Connection conn = dbConn.dbConn();
             PreparedStatement stmt = null;
             ResultSet rs = null;
-            String sql = "SELECT `name`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = ?";
+            String sql = "SELECT `lname`, `fname`, `mname`, `CTN`, `transaction_date` FROM admin.user_personal_info INNER JOIN admin.application_status WHERE admin.user_personal_info.userID = admin.application_status.userID and admin.application_status.status = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, CustomerInfo.PROCESS);
             rs = stmt.executeQuery();
             while (rs.next()) {
                 System.out.println(CustomerInfo.PROCESS);
                 data.add(new CustomerInfo(
-                        rs.getString("name"),
+                        rs.getString("lname") + ", " + rs.getString("fname") + " "+rs.getString("mname"),
                         rs.getString("CTN"),
                         rs.getDate("transaction_date").toLocalDate()));
                 dashboardTable.setItems(data);

@@ -45,17 +45,17 @@ public class UserDashboardController implements Initializable {
     private Hyperlink logoutuser;
 
     @FXML
-    void openAppStatus(ActionEvent event) throws Exception{
-        Main.setRoot("appstatus", "Check Application Status");
-        Main.centerRoot();
-        Main.showStage();
+    void openAppStatus(ActionEvent event) throws Exception {
+        User.setRoot("appstatus", "Check Application Status");
+        User.centerRoot();
+        User.showStage();
     }
 
     @FXML
-    void openIDStatus(ActionEvent event) throws Exception{
-        Main.setRoot("idstatus", "Check ID Status");
-        Main.centerRoot();
-        Main.showStage();
+    void openIDStatus(ActionEvent event) throws Exception {
+        User.setRoot("idstatus", "Check ID Status");
+        User.centerRoot();
+        User.showStage();
     }
 
     @FXML

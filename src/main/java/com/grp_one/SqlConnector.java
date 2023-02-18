@@ -6,7 +6,7 @@ public class SqlConnector {
     public Connection dbConn() throws SQLException, ClassNotFoundException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://", "root", "creamPuffs69420");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://", "root", "");
             System.out.println("Connection successful");
             return conn;
         } catch (SQLException e) {

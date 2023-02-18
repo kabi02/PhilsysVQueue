@@ -1,0 +1,61 @@
+package com.grp_one.controllers.Bot;
+
+public class ChatContextProvider {
+    public static final String PROFANITYDISPATCH = "CONTEXTPROFANITYID1001";
+    public static final String BOTINTRODISPATCH = "BOTINTRODUCTIONID1000";
+    public static final String USERPROFANITY = "Rainbows and Butterflies!";
+    public static final String HELPDISPATCH = "CONTEXTHELPID1002";
+    public static final String HELPDISPATCHSTART = "CONTEXTHELPID1003";
+    public static final String HELPDISPATCHLIST = "CONTEXTHELPID1004";
+    public static final String HELPDISPATCHEND = "CONTEXTHELPID1005";
+    public static final String APPLYDISPATCH = "CONTEXTAPPLYID1006";
+    public static final String APPLYDISPATCHSTART = "CONTEXTAPPLYID1007";
+    public static final String APPLYDISPATCH2ND = "CONTEXTAPPLYID1008";
+    public static final String APPLYDISPATCH3RD = "CONTEXTAPPLYID1009";
+    public static final String APPLYDISPATCHLIST = "CONTEXTAPPLYID1010";
+    public static final String APPLYDISPATCHEND = "CONTEXTAPPLYID1011";
+    public static final String BIODISPATCH = "CONTEXTBIOID1012";
+    public static final String CLAIMDISPATCH = "CONTEXTCLAIMID1013";
+    public static final String CLAIMDISPATCH2ND = "CONTEXTCLAIMID1014";
+    public static final String CLAIMDISPATCH3RD = "CONTEXTCLAIMID1015";
+    public static final String DOCDISPATCHAA = "CONTEXTDOCID1016";
+    public static final String DOCDISPATCHAB = "CONTEXTDOCID1016A";
+    public static final String DOCDISPATCHAC = "CONTEXTDOCID1016B";
+    public static final String DOCDISPATCHAD = "CONTEXTDOCID1016C";
+    public static final String DOCDISPATCHAE = "CONTEXTDOCID1016D";
+    public static final String DOCDISPATCHAF = "CONTEXTDOCID1016E";
+    public static final String DOCDISPATCHBA = "CONTEXTDOCID1017";
+    public static final String DOCDISPATCHBB = "CONTEXTDOCID1017A";
+    public static final String DOCDISPATCHBC = "CONTEXTDOCID1017B";
+    public static final String DOCDISPATCHBD = "CONTEXTDOCID1017C";
+    public static final String DOCDISPATCHBE = "CONTEXTDOCID1017D";
+    public static final String DOCDISPATCHCA = "CONTEXTDOCID1018";
+    public static final String DOCDISPATCHCB = "CONTEXTDOCID1018A";
+    public static final String DOCDISPATCHCC = "CONTEXTDOCID1018B";
+
+    public static final String LNAME = "lname";
+    public static final String FNAME = "fname";
+    public static final String MNAME = "mname";
+    public static final String SEX = "sex";
+    public static final String BDAY = "dob";
+    public static final String CITY = "city";
+    public static final String PROVINCE = "province";
+    public static final String COUNTRY = "country";
+    public static final String BTYPE = "bloodtype";
+    public static final String FILoALIEN = "filalien";
+    public static final String MARITAL = "mstatus";
+    public static final String ROOM = "addrfu";
+    public static final String HOUSE = "addhlb";
+    public static final String STRT = "addstreet";
+    public static final String SUBDIV = "addsubdiv";
+    public static final String CITY2 = "addcity";
+    public static final String PROVINCE2 = "addprovince";
+    public static final String COUNTRY2 = "addcountry";
+    public static final String CONTACT = "contact";
+
+    public static final String FAQ_1 = "How to apply for an ID";
+    public static final String FAQ_2 = "Required Documents";
+    public static final String FAQ_3 = "How to check application Status";
+    public static final String FAQ_4 = "Biometrics";
+    public static final String FAQ_5 = "PhilSys Link";
+}

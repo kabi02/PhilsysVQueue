@@ -1,4 +1,4 @@
-package com.grp_one.controllers;
+package com.grp_one.controllers.Bot;
 
 import java.net.URL;
 import java.net.URLConnection;
@@ -59,7 +59,7 @@ public class ChatBotController implements Initializable {
     private Label message;
     private AnchorPane sessionPane = new AnchorPane();
     private ImageView botProfile;
-    private Image botImage = new Image(getResourcesPath() + "/imgs/bot.png");
+    private Image botImage = new Image(ChatBot.getResourcesPath() + "/imgs/bot.png");
     private ArrayList<HBox> newResponse = new ArrayList<HBox>();
     private ArrayList<Label> action = new ArrayList<Label>();
     private ArrayList<String> chatHistory = new ArrayList<String>();
@@ -342,15 +342,6 @@ public class ChatBotController implements Initializable {
         return newMessage;
     }
 
-    public static String getResourcesPath() {
-        File currDir = new File(".");
-        String path = currDir.getAbsolutePath();
-        path = path.substring(0, path.length() - 2);
-        // System.out.println(path);
-        String resourcesPath = path + File.separator + "src" + File.separator + "main" + File.separator + "resources";
-        return resourcesPath;
-    }
-
     private void initFAQButtons() {
         suggestion_1.setText(ChatContextProvider.FAQ_1);
         suggestion_2.setText(ChatContextProvider.FAQ_2);
@@ -407,7 +398,7 @@ public class ChatBotController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        resourcesPath = getResourcesPath();
+        resourcesPath = ChatBot.getResourcesPath();
         MagicStrings.default_bot_response = defaultResponse;
         MagicBooleans.trace_mode = TRACE_MODE;
         bot = new Bot("super", resourcesPath);

@@ -1,6 +1,6 @@
 package com.grp_one.controllers;
 
-import com.grp_one.Main;
+import com.grp_one.*;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,9 +18,9 @@ public class AppStatusController {
     private Hyperlink linkStatusGoBack;
 
     @FXML
-    void backToDashboard(ActionEvent event) throws Exception{
-        Main.setRoot("userdashboard", "User Dashboard");
-        Main.centerRoot();
-        Main.showStage();
+    void backToDashboard(ActionEvent event) throws Exception {
+        User.setRoot("userdashboard", "User Dashboard");
+        User.centerRoot();
+        User.showStage();
     }
 }

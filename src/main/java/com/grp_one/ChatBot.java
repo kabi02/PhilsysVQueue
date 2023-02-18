@@ -64,6 +64,15 @@ public class ChatBot extends Application {
         return fxmlLoader.load();
     }
 
+    public static String getResourcesPath() {
+        File currDir = new File(".");
+        String path = currDir.getAbsolutePath();
+        path = path.substring(0, path.length() - 2);
+        // System.out.println(path);
+        String resourcesPath = path + File.separator + "src" + File.separator + "main" + File.separator + "resources";
+        return resourcesPath;
+    }
+
     public static void main(String[] args) {
         launch();
     }

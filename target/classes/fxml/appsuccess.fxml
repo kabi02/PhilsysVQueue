@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="293.0" prefWidth="429.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grp_one.controllers.AppSuccessController">
    <children>
       <Label layoutX="171.0" layoutY="45.0" text="Status">
@@ -27,7 +26,7 @@
       </Label>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="185.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/check.png" />
+            <Image url="@../imgs/check.png" />
          </image>
       </ImageView>
       <Button fx:id="okButton" layoutX="197.0" layoutY="237.0" mnemonicParsing="false" onAction="#backToDashboard" text="OK" />

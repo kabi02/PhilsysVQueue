@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 import com.grp_one.*;
 
-public class UInfoAdminController implements Initializable{
+public class UInfoAdminController implements Initializable {
     SqlConnector dbConn = new SqlConnector();
 
     @FXML
@@ -39,6 +39,8 @@ public class UInfoAdminController implements Initializable{
 
     @FXML
     private Button btnAccept;
+    @FXML
+    private Button decline;
 
     @FXML
     private TextField regInfoContact;
@@ -79,7 +81,7 @@ public class UInfoAdminController implements Initializable{
     private TextField txtSex;
 
     @FXML
-    void backToDash(ActionEvent event) throws Exception{
+    void backToDash(ActionEvent event) throws Exception {
         Admin.setRoot("admindashboard", "Admin Dashboard");
         Admin.centerRoot();
         Admin.showStage();
@@ -91,12 +93,13 @@ public class UInfoAdminController implements Initializable{
             Connection conn = dbConn.dbConn();
             PreparedStatement pst = null;
             ResultSet rs = null;
-            String query = "SELECT * FROM admin.user_personal_info LEFT JOIN admin.application_status ON admin.user_personal_info.userID = admin.application_status.userID;";
-            String query2 = "SELECT * FROM admin.user_address LEFT JOIN admin.application_status ON admin.user_address.userID = admin.application_status.userID;";
+            String query = "SELECT * FROM admin.user_personal_info LEFT JOIN admin.application_status ON admin.user_personal_info.userID = admin.application_status.userID WHERE admin.application_status.CTN = ?;";
+            String query2 = "SELECT * FROM admin.user_address LEFT JOIN admin.application_status ON admin.user_address.userID = admin.application_status.userID WHERE admin.application_status.CTN = ?;";
             pst = conn.prepareStatement(query);
+            pst.setString(1, AdminDashboardController.selection.getCTN());
             rs = pst.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 txtFieldLN.setText(rs.getString("lname").toString());
                 txtFieldFN.setText(rs.getString("fname").toString());
                 txtFieldMN.setText(rs.getString("mname").toString());
@@ -111,8 +114,9 @@ public class UInfoAdminController implements Initializable{
                 regInfoContact.setText(rs.getString("contact"));
             }
             pst = conn.prepareStatement(query2);
+            pst.setString(1, AdminDashboardController.selection.getCTN());
             rs = pst.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 addressRFU.setText(rs.getString("unit_no"));
                 addressHLB.setText(rs.getString("house_no"));
                 addressStreet.setText(rs.getString("street"));
@@ -121,7 +125,7 @@ public class UInfoAdminController implements Initializable{
                 addressProv.setText(rs.getString("province"));
                 addressCountry.setText(rs.getString("country"));
             }
-            
+
         } catch (Exception e) {
             // TODO: handle exception
         }
@@ -130,6 +134,59 @@ public class UInfoAdminController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         showDeets();
+        btnAccept.setOnMouseClicked(event -> {
+            try {
+                Connection conn = dbConn.dbConn();
+                PreparedStatement stmt = null;
+                ResultSet rs = null;
+                String sql = "select admin.application_status.status from admin.application_status where admin.application_status.CTN = ?";
+                stmt = conn.prepareStatement(sql);
+                stmt.setString(1, AdminDashboardController.selection.getCTN());
+                rs = stmt.executeQuery();
+                rs.next();
+                if (rs.getString(1).equalsIgnoreCase(CustomerInfo.PROCESS)) {
+                    sql = "update admin.application_status set status=? where admin.application_status.CTN = ?";
+                    stmt = conn.prepareStatement(sql);
+                    stmt.setString(1, CustomerInfo.BIOMETRICS);
+                    stmt.setString(2, AdminDashboardController.selection.getCTN());
+                    stmt.executeUpdate();
+                } else if (rs.getString(1).equalsIgnoreCase(CustomerInfo.BIOMETRICS)) {
+                    sql = "update admin.application_status set status=? where admin.application_status.CTN = ?";
+                    stmt = conn.prepareStatement(sql);
+                    stmt.setString(1, CustomerInfo.CLAIMING);
+                    stmt.setString(2, AdminDashboardController.selection.getCTN());
+                    stmt.executeUpdate();
+                } else if (rs.getString(1).equalsIgnoreCase(CustomerInfo.CLAIMING)) {
+                    sql = "update admin.application_status set status=? where admin.application_status.CTN = ?";
+                    stmt = conn.prepareStatement(sql);
+                    stmt.setString(1, CustomerInfo.CLAIMED);
+                    stmt.setString(2, AdminDashboardController.selection.getCTN());
+                    stmt.executeUpdate();
+
+                }
+                Admin.setRoot("admindashboard", "Admin Dashboard");
+                Admin.centerRoot();
+                Admin.showStage();
+            } catch (Exception e) {
+
+            }
+        });
+        decline.setOnMouseClicked(event -> {
+            try {
+                Connection conn = dbConn.dbConn();
+                PreparedStatement stmt = null;
+                String sql = "update admin.application_status set status=? where admin.application_status.CTN = ?";
+                stmt = conn.prepareStatement(sql);
+                stmt.setString(1, CustomerInfo.DECLINED);
+                stmt.setString(2, AdminDashboardController.selection.getCTN());
+                stmt.executeUpdate();
+                Admin.setRoot("admindashboard", "Admin Dashboard");
+                Admin.centerRoot();
+                Admin.showStage();
+            } catch (Exception e) {
+
+            }
+        });
     }
 
 }

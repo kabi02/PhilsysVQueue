@@ -21,11 +21,18 @@ import javafx.scene.control.ToggleGroup;
 import com.grp_one.*;
 import java.sql.*;
 
+<<<<<<< HEAD
 public class UserInfoController implements Initializable {
     ObservableList<String> maritalStatusList = FXCollections.observableArrayList("Single", "Married", "Widowed",
             "Divorced", "Legally Separated", "Annulled", "Nullified");
     ObservableList<String> bloodTypeList = FXCollections.observableArrayList("A+", "A-", "B+", "B-", "AB+", "AB-", "O+",
             "O-", "Unknown");
+=======
+public class UserInfoController {
+    SqlConnector dbConn = new SqlConnector();
+    ObservableList<String> maritalStatusList = FXCollections.observableArrayList("Single", "Married", "Widowed", "Divorced", "Legally Separated", "Annulled", "Nullified");
+    ObservableList<String> bloodTypeList = FXCollections.observableArrayList("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-", "Unknown");
+>>>>>>> 272f714c0789b25518d900244ca1d8f04c3fc046
     @FXML
     private ChoiceBox<String> bloodTypeBox;
 
@@ -43,6 +50,9 @@ public class UserInfoController implements Initializable {
 
     @FXML
     private ToggleGroup genderSel;
+
+    @FXML
+    private ToggleGroup filOrAlien;
 
     @FXML
     private TextField txtFieldCity;
@@ -92,18 +102,50 @@ public class UserInfoController implements Initializable {
     @FXML
     private RadioButton btnAlien;
 
+<<<<<<< HEAD
     @FXML
     private TextField regInfoEmail;
 
     @FXML
+=======
+    @FXML 
+>>>>>>> 272f714c0789b25518d900244ca1d8f04c3fc046
     private TextField regInfoContact;
 
     @FXML
     private Button btnFormNext;
 
     @FXML
+<<<<<<< HEAD
     void goToUploadPic(ActionEvent event) throws Exception {
 
+=======
+    void goToUploadPic(ActionEvent event) throws Exception{
+        Connection conn = dbConn.dbConn();
+        RadioButton selected = (RadioButton)genderSel.getSelectedToggle();
+        RadioButton selectedResidence = (RadioButton)filOrAlien.getSelectedToggle();
+        String lname, fname, mname, dob, city, province, country, bloodtype, filalien, mstatus, addrfu, addhlb, addstreet, addsubdiv, addcity, addprovince, addcountry, contact;
+        char sex;
+        lname = txtFieldLN.getText();
+        fname = txtFieldFN.getText();
+        mname = txtFieldMN.getText();
+        sex = selected.getText().charAt(0);
+        dob = dateBirth.getValue().toString();
+        city = txtFieldCity.getText();
+        province = txtFieldProv.getText();
+        country = txtFieldCountry.getText();
+        bloodtype = bloodTypeBox.getValue().toString();
+        filalien = selectedResidence.getText();
+        mstatus = maritalStatusBox.getValue().toString();
+        addrfu = addressRFU.getText();
+        addhlb = addressHLB.getText();
+        addstreet = addressStreet.getText();
+        addsubdiv = addressSub.getText();
+        addcity = addressCity.getText();
+        addprovince = addressProv.getText();
+        addcountry = addressCountry.getText();
+        contact = regInfoContact.getText();
+>>>>>>> 272f714c0789b25518d900244ca1d8f04c3fc046
     }
 
     @FXML

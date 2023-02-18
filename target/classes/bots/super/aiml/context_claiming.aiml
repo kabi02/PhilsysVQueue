@@ -2,7 +2,11 @@
 <aiml>
 <!-- File: context_claiming.aiml -->
 <!-- Author: Dr. Richard S. Wallace -->
+<<<<<<< HEAD:target/classes/bots/super/aiml/context_claiming.aiml
 <!-- Last modified: February 15, 2023 -->
+=======
+<!-- Last modified: February 17, 2023 -->
+>>>>>>> 272f714c0789b25518d900244ca1d8f04c3fc046:target/classes/bots/super/aiml/bot_profile.aiml
 <!--  -->
 <!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
 <!--  -->

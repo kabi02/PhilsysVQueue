@@ -45,6 +45,20 @@ public class UserDashboardController implements Initializable {
     private Hyperlink logoutuser;
 
     @FXML
+    void openAppStatus(ActionEvent event) throws Exception{
+        Main.setRoot("appstatus", "Check Application Status");
+        Main.centerRoot();
+        Main.showStage();
+    }
+
+    @FXML
+    void openIDStatus(ActionEvent event) throws Exception{
+        Main.setRoot("idstatus", "Check ID Status");
+        Main.centerRoot();
+        Main.showStage();
+    }
+
+    @FXML
     private void openChatbot(final ActionEvent event) throws Exception {
         Platform.runLater(new Runnable() {
             public void run() {
